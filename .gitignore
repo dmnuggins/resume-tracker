@@ -1,0 +1,8 @@
+# Generated PDFs are ignored by default.
+# Tagged submission snapshots are exempt — manage them manually:
+#   git tag application/<company>-<role>-<YYYY-MM-DD>
+# Tagged refs preserve the full tree state at submission time regardless of this rule.
+exports/*.pdf
+
+# macOS
+.DS_Store
