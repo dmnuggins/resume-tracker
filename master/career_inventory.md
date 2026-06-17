@@ -43,6 +43,9 @@ _May 2024 – Present_
   - USPS stamp machine verification
   - Isolated Python dev machine on a guest network
   - VLAN + physical port management for desktop and IoT setup
+- Managed LAN/WAN infrastructure across 3 sites (LA, Denver, Orange), including switches, routers, and firewall (e.g. HP Aruba, Dell EMC hosts, TrueNAS storage)
+- Configured and maintained secure remote access to internal desktop + server VM's for remote users using Horizon View + DUO authentication
+- Troubleshot connectivity and throughput issues with Horizon Client connections to server side VM's, ended up being a UAG bottleneck that resulted in lagging out our remote users
 
 ### Endpoint & Device Management
 
@@ -56,7 +59,7 @@ _May 2024 – Present_
 ### VDI & Virtualization
 
 - Administered VMWare/Omnissa virtual desktop environment serving 120 concurrent users
-- Troubleshot VDI session issues including DEM profile corruption and Horizon connection latency; cut help desk requests for authentication and profile problems from several per day to a few per week
+- Troubleshot VDI session issues including Omnissa Dynamic Environment Manager profile corruption and Horizon connection latency; cut help desk requests for authentication and profile problems from several per day to a few per week
 - Coordinated and executed the migration of VDI infrastructure from Windows 10 to 11
 - Horizon connection server upgrades
 - Maintained instant clone pool updates through master machines deployed in Horizon
@@ -71,6 +74,7 @@ _May 2024 – Present_
   - Bluebeam
   - GitHub Teams + GitLab
   - Ajera (ERP)
+  - O365
 
 ### Application management
 
@@ -82,7 +86,6 @@ _May 2024 – Present_
 
 - Wrote PowerShell scripts to automate [task, e.g. account provisioning, report generation], saving 3 hours/week
 - Wrote a Python/pyautogui script that cycles CALog and PC Tracker dashboards on networked displays; keeps them self-sustaining and eliminated manual recasting
-- Built a PowerShell script that generates anonymous share links across 200,000+ items, reading from a client address list to produce the right link for each utility and benchmarking subfolder <!-- NEEDS DETAIL: This appears to describe the same project as the SharePoint migration + Python/Graph API bullet below — one says PowerShell, the other says Python. Clarify or remove the duplicate -->
 - Documented and handed off [N] automation scripts to the team knowledge base
 - Used Claude Code to research approaches, audit existing scripts, and build new automation
   - Peer-reviewed all AI-assisted code before production use, even for internal tooling
@@ -97,10 +100,20 @@ _May 2024 – Present_
 - Re-enrolled BYOD endpoints from mergers and acquisitions into Intune and deployed ScreenConnect for fast remote admin access
 - Assisted with user audit and litigation hold for a structural project under contention <!-- NEEDS DETAIL: What did you specifically do (eDiscovery, export, freeze)? What systems (M365, Exchange)? What was the project context? -->
 
-### Projects
+### Linux Servers
 
-- Led/contributed to [project name]: [what it was], [your role], [outcome]
-- Migrated [system/service] from [X] to [Y], coordinating with [teams] and completing within [timeline]
+- Set up and actively maintaining GitLab server instance to host internally developed code
+- Set up and configure WSL for Claude Code implementation for AI assisted tooling for internal application development
+
+### Updates/Adoption/Migration
+
+- Redeployed our VDI instant clone pools, transitioning from Windows 10 to Windows 11 before the end of support deadline. This also improved the stability of the end user desktop experience.
+- Consolidated our IP phone (RingCentral), internal messaging + video conferencing (Teams) platforms to Zoom, resulting in better compatibility with our VDI and minimizing application management + configuration overhead
+
+### Disaster Recovery and Prep
+
+- Assisted the IT Director in rebuilding our VDI after a catastrophic failure of a major datastore appliance that housed our VDI along with other auxiliary servers
+- Installed and serviced server grade UPS appliances
 
 ---
 
@@ -110,9 +123,7 @@ _Feb 2024 – May 2024_
 
 ### Networking
 
-- Managed LAN/WAN infrastructure across 2 sites, including switches, routers, and firewall (e.g. HP Aruba, Dell EMC hosts, TrueNAS storage)
-- Configured and maintained secure remote access to internal desktop + server VM's for remote users using Horizon View + DUO authentication
-- Troubleshot connectivity and throughput issues <!-- NEEDS DETAIL: What caused the issues? Any specific resolution or outcome? -->
+- Administered and troubleshoot Ubiquiti networking hardware
 
 ### Microsoft 365
 
@@ -188,7 +199,6 @@ _Promoted to Data Architect Apr 2018_
 ### End User Support
 
 - Handled IT support for hardware, software, and business apps in a healthcare environment with strict compliance requirements
-  - Rolled out BitLocker across 150+ Windows machines with IT leads in 2 business days, staggering mobile and stationary PCs to minimize downtime
 - Onboarded new staff, ran training sessions, and covered day-to-day troubleshooting
 
 ### Identity & Access
@@ -198,4 +208,4 @@ _Promoted to Data Architect Apr 2018_
 ### Infrastructure & Security
 
 - Set up and maintained secure remote access; kept endpoint security controls applied and current
-- Supported disk encryption rollout and applied compliance-driven system updates <!-- NEEDS DETAIL: This overlaps with the BitLocker bullet above — consider merging or clarifying if there were additional encryption initiatives beyond BitLocker -->
+- Rolled out BitLocker across 150+ Windows machines with IT leads in 2 business days, staggering mobile and stationary PCs to minimize downtime

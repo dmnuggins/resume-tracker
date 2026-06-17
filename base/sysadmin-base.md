@@ -15,7 +15,7 @@ IT systems administrator with 4+ years of hands-on experience supporting Windows
 ## CONTACT
 
 Dylan Nguyen
-(626) 559-799 | dylanguyen01@gmail.com | Rosemead, CA | [LinkedIn URL]
+(626) 559-7499 | dylanguyen01@gmail.com | Rosemead, CA | [LinkedIn URL]
 
 ---
 
