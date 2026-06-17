@@ -1,0 +1,126 @@
+{
+  "version": "1.0",
+  "timestamp": "2026-06-17T06:08:18Z",
+  "phase": null,
+  "phase_name": "career-helper-session",
+  "phase_dir": null,
+  "plan": null,
+  "task": null,
+  "total_tasks": null,
+  "status": "paused",
+  "completed_tasks": [
+    {
+      "id": 1,
+      "name": "Updated career_inventory.md with full work history",
+      "status": "done",
+      "notes": "Added Five Acres IT Tech role (Jul 2017–Apr 2018), filled in placeholders for VCA Security, VCA Scripting, Five Acres Data Architect sections"
+    },
+    {
+      "id": 2,
+      "name": "Updated applications.md",
+      "status": "done",
+      "notes": "Removed placeholder entries (Acme Corp, Globex IT, Initech); added SCAQMD IT Specialist I — closes 6/19/2026"
+    },
+    {
+      "id": 3,
+      "name": "Humanized career_inventory.md bullet points",
+      "status": "done",
+      "notes": "Removed AI writing patterns throughout: -ing tack-ons, em dashes, 'Leveraged', passive constructions, corporate boilerplate"
+    },
+    {
+      "id": 4,
+      "name": "Spell/grammar check career_inventory.md",
+      "status": "done",
+      "notes": "Fixed: 'Configured of', 'applicaitons', 'minimize on downtime', 'longer term', wrong tense 'Deploy', dangling -ing fragments"
+    },
+    {
+      "id": 5,
+      "name": "Flagged ambiguous bullets with NEEDS DETAIL comments",
+      "status": "done",
+      "notes": "4 bullets flagged: litigation hold (VCA), connectivity issues (iKrusher), knowledge base (Flex), encryption overlap (Five Acres IT Tech)"
+    },
+    {
+      "id": 6,
+      "name": "Created base/sysadmin-base.md",
+      "status": "done",
+      "notes": "Base resume for IT Tech/Sys Admin; filled in contact details by user (Dylan Nguyen, Rosemead CA, CompTIA Security+ 2023, BS CS Cal Poly Pomona)"
+    }
+  ],
+  "remaining_tasks": [
+    {
+      "id": 7,
+      "name": "URGENT: Tailor resume for SCAQMD IT Specialist I",
+      "status": "not_started",
+      "notes": "Job closes 6/19/2026. JD already fetched and indexed. Run /application-optimiser with SCAQMD JD."
+    },
+    {
+      "id": 8,
+      "name": "Write cover letter for SCAQMD",
+      "status": "not_started",
+      "notes": "Run /application-optimiser cover letter capability"
+    },
+    {
+      "id": 9,
+      "name": "Resolve PowerShell vs Python duplicate in career_inventory.md",
+      "status": "not_started",
+      "notes": "Two bullets describe the 200k share links project — one says PowerShell, one says Python + Graph API. Flagged in inventory."
+    },
+    {
+      "id": 10,
+      "name": "Fill remaining MISSING placeholders in career_inventory.md",
+      "status": "not_started",
+      "notes": "VCA: device imaging tool/time, PowerShell script specifics, litigation hold details. iKrusher: M365 policy feature, device build time."
+    },
+    {
+      "id": 11,
+      "name": "Fill remaining MISSING placeholders in base/sysadmin-base.md",
+      "status": "not_started",
+      "notes": "LinkedIn URL still missing. VCA imaging specifics, iKrusher M365 policy, iKrusher device build time."
+    }
+  ],
+  "blockers": [
+    {
+      "description": "SCAQMD application closes 6/19/2026 — 2 days from session end",
+      "type": "external",
+      "workaround": "Prioritize SCAQMD tailored resume + cover letter next session. JD is already indexed in context-mode knowledge base."
+    }
+  ],
+  "human_actions_pending": [
+    {
+      "action": "Clarify PowerShell vs Python for the 200k share links project",
+      "context": "career_inventory.md has two bullets about the same SharePoint/links project with different languages. User needs to confirm which is correct or if both were used.",
+      "blocking": false
+    },
+    {
+      "action": "Fill in employment gap explanations",
+      "context": "Two gaps visible in resume timeline: Jul 2019–Nov 2020 (16mo) and Jul 2022–Feb 2024 (19mo). User should have a prepared answer for interviews.",
+      "blocking": false
+    },
+    {
+      "action": "Provide LinkedIn URL for sysadmin-base.md",
+      "context": "Contact section has [LinkedIn URL] placeholder",
+      "blocking": false
+    }
+  ],
+  "decisions": [
+    {
+      "decision": "Used Python + Graph API version of the 200k share links bullet in base resume",
+      "rationale": "More detailed and specific than the PowerShell version; flagged both in inventory for clarification"
+    },
+    {
+      "decision": "Combined Five Acres IT Tech and Data Architect as one entry in base resume",
+      "rationale": "Shorter tenure (2 years total), same employer; keeps resume compact and shows promotion"
+    },
+    {
+      "decision": "Targeted base resume as 'IT Technician II / Systems Administrator' with 4+ years framing",
+      "rationale": "Matches user's current title and most relevant experience level; avoids overstating or understating"
+    }
+  ],
+  "uncommitted_files": [
+    "applications/applications.md",
+    "master/career_inventory.md",
+    "base/sysadmin-base.md (untracked)"
+  ],
+  "next_action": "Tailor sysadmin-base.md for SCAQMD IT Specialist I using /application-optimiser — job closes 6/19/2026. SCAQMD JD was already fetched this session and is indexed.",
+  "context_notes": "This is a career-helper session, not a GSD phase. No .planning/phases directory exists. User is Dylan Nguyen, IT professional in Rosemead CA, applying to SCAQMD IT Specialist I (closes 6/19). Session established career inventory, base resume, and cleaned up existing content."
+}

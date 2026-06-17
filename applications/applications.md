@@ -2,6 +2,4 @@
 
 | Date | Company | Role | Variant Used | Status | Notes |
 |---|---|---|---|---|---|
-| 2026-06-01 | Acme Corp | Systems Administrator | sysadmin | Applied | Referral from J. Smith; recruiter screen scheduled |
-| 2026-06-05 | Globex IT | Network Administrator | network-admin | Phone Screen | Waiting for hiring manager interview |
-| 2026-06-10 | Initech | IT Project Manager | it-project-manager | Drafting | Job req closes 2026-06-20 |
+| 2026-06-16 | South Coast AQMD | Information Technology Specialist I | — | Drafting | Job #26:25:EV; closes 6/19/2026; $60,386–$85,883/yr; Diamond Bar, CA |
