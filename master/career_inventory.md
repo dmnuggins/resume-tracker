@@ -39,6 +39,7 @@ _May 2024 – Present_
 - Assisted with core network switch upgrades + rewiring with DAC
 - Configured our internal 10ZiG thin client manager server to be able to connect to thin clients outside our network using a DMZ secure connection server to securely bridge external thin clients to our internal manager
 - Configured virtual NICs for Dell EMC ESXi hosts when setting up a new server
+- Configured DHCP and IP lease reservations through Active Directory for new virtual servers
 - Configured Fortinet firewall rules to enable service connectivity for department needs
   - Air quality management dashboard
   - USPS stamp machine verification
@@ -59,6 +60,7 @@ _May 2024 – Present_
 - Deployed LAPS (Local Administrative Password Solution) to improve our security posture by conditionally auto-rotating stale passwords, moving away from manually configuring a local admin password
 - Upgraded 10ZiG thin client fleet from 5000-series to 6000/7000-series hardware across multiple users
 - Set up and imaged new laptops; handled Intune re-enrollment, license revocation from old devices, and full app stack installation (Bluebeam, O365, ScreenConnect/HelpWire)
+- Deployed mobile endpoints using Microsoft Autopilot for automated enrollment and provisioning, eliminating manual imaging steps for new device rollouts
 
 ### VDI & Virtualization
 
@@ -72,18 +74,21 @@ _May 2024 – Present_
 - Deployed VDI to 10ZiG thin clients, centrally managed through a 10ZiG management server for patching and remote support
 - Stabilized VDI for end users: reduced login/auth helpdesk requests from several per day to roughly once every 1.5 weeks by optimizing the login flow, DEM profile persistence, and FSLogix configuration
 - Integrated git version control for DEM configurations to enable change auditing over time
+- Used Horizon Remote Support to provide real-time session assistance to VDI users without requiring a separate remote access tool; managed instant clone provisioning settings and applied patches through the Horizon console
+- Configured App Volumes to dynamically deliver department-specific applications to VDI sessions without baking them into the gold image — deployed VSCode for the IT/Code pool, CBECC and other government sustainability tools for the Green/Energy Modeler pools, and engineering applications for the CAD and Structural pools
 
 ### Identity & Access
 
 - Managed user lifecycle (provisioning, de-provisioning, role changes) in Active Directory and Entra ID for 120+ accounts
 - Enforced least-privilege access across Active Directory and SaaS apps; reviewed group memberships quarterly
 - Configured and maintained SSO/MFA/Conditional Access policies for SaaS applications
-  - Zoom
+  - Zoom (Zoom Workplace login via Entra ID SSO)
   - Bluebeam
   - GitHub Teams + GitLab
   - Ajera (ERP)
   - O365
 - Coordinated cross-platform email standardization across AD, Entra ID, and SaaS apps (Autodesk, Bluebeam, Zoom, Ajera) ahead of Ajera SSO rollout — ensured all active accounts were consistent across local and cloud directories
+- Audited and reorganized Group Policy Objects: removed stale GPOs, tested policy scope, and structured GPO assignments by user and computer OUs to ensure correct policy application across groups
 
 ### Application management
 
@@ -101,7 +106,7 @@ _May 2024 – Present_
 - Used Claude Code to research approaches, audit existing scripts, and build new automation
   - Peer-reviewed all AI-assisted code before production use, even for internal tooling
 - Used Omnissa DEM to deploy PowerShell scripts for pre-login configuration, registry injections, and cache resets
-- Migrated 200,000+ building files to SharePoint using Microsoft's migration agent on a dedicated sync VM, then built a Python script to generate anonymous share links so the Benchmarking team could distribute the right links to each building client
+- Migrated 200,000+ building files to SharePoint using Microsoft's migration agent on a dedicated sync VM, then built a Python script to generate 700+ anonymous share links so the Benchmarking team could distribute the right links to each building client
   - Python + Microsoft Graph API
 
 ### Security
@@ -137,7 +142,6 @@ _May 2024 – Present_
 
 Selected tickets that show diagnostic depth, cross-system knowledge, or non-obvious resolutions. Pulled from the VCA IT support queue.
 
-- **VDI freeze on Teams/Zoom call exit** — users' VMs locked up when ending video calls; monitored recurrence, identified resource spike pattern in instant clone pool, confirmed resolved after DEM and FSLogix tuning
 - **Horizon Client 200% scaling on remote CAD desktop** — Luis's standalone Win11 machine had 200% system display scale set as default; Horizon Client inherited it for the remote session; resolved by correcting display scale on the physical machine
 - **Inbound Zoom Phone queue — callers couldn't hear agents** — primary call queue routed to backup, answered calls had no audio on either side; investigated call queue routing config and Zoom Phone settings; resolved routing misconfiguration
 - **AutoCAD 2020 PC3 print driver prompt** — Kris got a "Update PC3 File with New Printer" error on print; resolved by resetting DWG To PDF.pc3 via clearing `%APPDATA%\Autodesk\AutoCAD 2020` config files
@@ -163,13 +167,12 @@ _Feb 2024 – May 2024_
 ### Microsoft 365
 
 - Administered Microsoft 365 tenant for 56 users: Exchange Online, SharePoint, Teams, and licensing
-- Implemented M365 policies and governance <!-- MISSING: which policies specifically? DLP, retention, shared mailbox governance? -->
+- Implemented M365 policies and governance
 - Onboarded users to M365 and wrote documentation and runbooks that cut future onboarding time by 30 minutes
 
 ### Endpoint Management
 
 - Managed 50+ endpoints (Windows/macOS) in Intune with baseline configuration policies
-- Standardized device build process with a documented baseline configuration <!-- MISSING: time saved per device? -->
 
 ### Vendor & ISP Coordination
 
@@ -201,7 +204,7 @@ _Nov 2020 – Jul 2022_
 ### End User Support
 
 - Provided Tier 1–2 support for 20+ staff across a hybrid remote environment
-- Built internal knowledge base <!-- NEEDS DETAIL: What tool (Confluence, Notion, SharePoint)? What topics/scope? How many staff used it? -->
+- Built internal knowledge base using Google Sites, setting up the template for department maintainers to build their team specific sections
 
 ---
 
