@@ -1,0 +1,53 @@
+{
+  "version": "1.0",
+  "timestamp": "2026-06-23T22:37:05Z",
+  "phase": "career-helper-session",
+  "phase_name": "City of LA IT Specialist (Applications Programmer) application",
+  "phase_dir": null,
+  "plan": null,
+  "task": null,
+  "total_tasks": null,
+  "status": "paused",
+  "completed_tasks": [
+    {"id": 1, "name": "Duties summaries written for all roles — base/duties-summaries.md (for government jobs site applications)", "status": "done"},
+    {"id": 2, "name": "SCAQMD CV exported to PDF — exports/scaqmd-it-specialist-i-cv.pdf (via pandoc HTML + Chrome headless)", "status": "done"},
+    {"id": 3, "name": "Career inventory expanded — Autopilot, Horizon Remote Support, App Volumes, DHCP/IP reservations, Zoom Workplace SSO via Entra ID, GPO audit", "status": "done"},
+    {"id": 4, "name": "SCAQMD cv-optimised.md Skills updated — added Windows Autopilot, App Volumes, Horizon Remote Support", "status": "done"},
+    {"id": 5, "name": "SCAQMD supplementary questions updated — Q03 (new duties), Q04 (DHCP), Q05 (GPO audit story), Q06 (Horizon Remote Support)", "status": "done"},
+    {"id": 6, "name": "MISSING placeholders removed from career_inventory.md; iKrusher M365 policies and PowerShell/Python duplicate resolved (Python confirmed)", "status": "done"},
+    {"id": 7, "name": "SCAQMD application submitted 2026-06-19; tagged application/scaqmd-it-specialist-i-2026-06-19", "status": "done"},
+    {"id": 8, "name": "City of LA IT Specialist (Applications Programmer) 1429 (J) — role researched, application folder created, cv-optimised.md v1.0 drafted", "status": "done"}
+  ],
+  "remaining_tasks": [
+    {"id": 9, "name": "Confirm SQL/RDBMS experience — user needs to answer before CV can be finalized (explicit gap in JD duties)", "status": "pending_user_input"},
+    {"id": 10, "name": "Confirm OOP/language experience (Java, C++, .NET, JavaScript, PHP, C#) — exam tests these directly", "status": "pending_user_input"},
+    {"id": 11, "name": "Confirm Five Acres web app language — which language was used to extend the regex parsing app?", "status": "pending_user_input"},
+    {"id": 12, "name": "Update LA cv-optimised.md with confirmed SQL/OOP/language details", "status": "not_started"},
+    {"id": 13, "name": "Export LA CV to PDF", "status": "not_started"},
+    {"id": 14, "name": "Draft supplemental questions for LA application — requires listing Cal Poly CS coursework (course title, units, date, grade)", "status": "not_started"},
+    {"id": 15, "name": "Submit City of LA application — deadline 7/2/2026", "status": "not_started"},
+    {"id": 16, "name": "Exam prep — City of LA multiple-choice exam Aug 25–31 2026 (100% of score); OOP, SDLC, SQL, Java/C++/.NET/JavaScript, debugging tools", "status": "not_started"}
+  ],
+  "blockers": [
+    {"description": "SQL/RDBMS experience not documented in career inventory — JD explicitly requires writing SQL queries and RDBMS reporting. CV marked as partial on this keyword.", "type": "human_action", "workaround": "CV v1.0 submitted as partial; update before final submission if user confirms SQL experience exists."},
+    {"description": "OOP language (Java/C++/.NET/JavaScript/PHP/C#) job experience not documented — exam tests these directly.", "type": "human_action", "workaround": "CS degree covers theory; personal projects or coursework not yet captured in inventory."}
+  ],
+  "human_actions_pending": [
+    {"action": "Confirm SQL/RDBMS experience and source (Cal Poly coursework, personal projects, job experience)", "context": "JD duties explicitly list SQL query writing and RDBMS reporting — largest keyword gap in CV", "blocking": true},
+    {"action": "Confirm OOP language experience for CV and exam prep", "context": "Exam tests Java/C++/.NET/JavaScript/PHP/C# directly; CS degree qualifies but job experience is undocumented", "blocking": false},
+    {"action": "Confirm Five Acres web app language (the regex parsing app extension)", "context": "This is real programming/dev work; naming the language makes it more credible on CV", "blocking": false},
+    {"action": "Gather Cal Poly CS coursework list (course title, units, semester, date, grade) for supplemental questions", "context": "City of LA requires listing qualifying IT/CS coursework in supplemental questions section", "blocking": true}
+  ],
+  "decisions": [
+    {"decision": "LA CV reoriented around scripting/programming/integration rather than sysadmin", "rationale": "Role is a programming position tested by OOP/SDLC/SQL exam; infrastructure experience is supporting evidence, not the lead", "phase": "current"},
+    {"decision": "Role slug: it-specialist-apps-programmer-la", "rationale": "Standard slug derivation for City of LA role", "phase": "current"},
+    {"decision": "PDF generation uses pandoc HTML + Chrome headless --print-to-pdf", "rationale": "No LaTeX installed; Chrome available; produces clean output. PDFs excluded from git by .gitignore — use git tag at submission.", "phase": "current"},
+    {"decision": "duties-summaries.md written for government jobs site applications, not CV variants", "rationale": "Government application forms ask for free-text duties per role; this file provides copy-paste answers", "phase": "current"}
+  ],
+  "uncommitted_files": [
+    "applications/applications.md",
+    "applications/it-specialist-apps-programmer-la/cv-optimised.md"
+  ],
+  "next_action": "Resume by answering the three pending questions (SQL experience, OOP language experience, Five Acres web app language), then update cv-optimised.md, export PDF, and draft supplemental questions. Deadline: 7/2/2026.",
+  "context_notes": "This is a career-helper session, not a GSD phase. User is Dylan Nguyen, IT Technician II in Rosemead CA. Two active applications: SCAQMD (submitted 6/19), City of LA IT Specialist (Applications Programmer) (deadline 7/2/2026). The LA role is a developer-track position tested 100% by multiple-choice exam (Aug 25-31 2026). CV qualifies via BS Computer Science from Cal Poly Pomona. Key differentiator from SCAQMD: LA role rewards scripting/programming/integration experience over pure sysadmin. PDF generation command: Chrome headless --print-to-pdf on HTML output from pandoc."
+}
