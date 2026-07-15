@@ -41,8 +41,9 @@ Dylan Nguyen
 - Configured Fortinet firewall rules to enable department service connectivity, including VLAN segmentation, guest network isolation for a dedicated development host, and physical port assignments for desktop and IoT devices
 - Configured a DMZ-hosted secure connector server to bridge external devices to the internal management network, enabling encrypted remote administration without directly exposing internal services
 - Configured DHCP and IP address reservations in Active Directory for new virtual servers and network devices, maintaining consistent addressing across the infrastructure
-- Administered VoIP environment across RingCentral and Zoom Phone; led platform migration to Zoom; diagnosed and resolved an inbound call queue routing misconfiguration that caused agents to answer calls with no audio on either side
-- Configured and maintained secure remote access for distributed staff using VMware Horizon View and Duo MFA; diagnosed and resolved a Unified Access Gateway (UAG) bottleneck causing session latency for remote users
+- Troubleshot IP phone one-touch deployment failure affecting half the office; identified an LLDP misconfiguration on the access switch blocking device provisioning, corrected the switch configuration, and completed the rollout
+- Maintained active change documentation during live Fortinet firewall configuration; when a new rule disrupted site-to-site connectivity with the Denver office, rolled back the change within minutes using documented context to restore service
+- Configured and maintained secure remote access for distributed staff using VMware Horizon View and Duo MFA; diagnosed and resolved a Unified Access Gateway (UAG) bottleneck causing session latency for remote users by tracing the connection path against server-side performance metrics
 - Administered VMware/Omnissa Horizon VDI environment for 120 concurrent users; managed instant clone desktop pools, Dynamic Environment Manager (DEM) profiles, and patch cycles — reduced help desk authentication and profile requests from several per day to roughly once per week
 - Managed 100+ Windows endpoints across three sites in Microsoft Intune; deployed Microsoft Autopilot for automated device provisioning and enrollment
 - Administered Active Directory and Entra ID user lifecycle (120+ accounts); configured SSO, MFA, and Conditional Access for SaaS applications including Zoom, Bluebeam, GitHub Teams, and Ajera ERP
@@ -88,55 +89,67 @@ Dylan Nguyen
 
 ---
 
+## PROJECTS
+
+- **Cisco IOS Home Lab (Packet Tracer):** Practicing OSPF neighbor configuration, VLAN trunking, access list implementation, and interface configuration in preparation for CCNA certification
+
+---
+
 ## ATS Optimization Report
 
 ### Keyword Coverage Analysis
 
-| Keyword | Location in CV | Status |
-|---|---|---|
-| network administrator | Profile | Covered |
-| LAN/WAN | Skills, VCA bullet 1 | Covered |
-| VLAN | Skills, VCA firewall bullet | Covered |
-| TCP/IP | Skills, Protocols | Covered |
-| DHCP | Skills, VCA bullet 4 | Covered |
-| firewall | Skills, VCA bullets 1-2 | Covered |
-| VPN | VCA remote access bullet | Covered |
-| structured cabling | VCA bullet 1 | Covered |
-| network troubleshooting | VCA UAG bullet, iKrusher bullet | Covered |
-| network security | Skills section | Covered |
-| voice communications | Skills, VCA VoIP bullet | Covered |
-| SNMP | Skills (Protocols) | Covered |
-| IP subnetting | Skills | Covered |
-| CCNA | Profile, Certifications | Covered |
-| network management | Profile | Covered |
-| BGP/OSPF/EIGRP | [GAP] — not in job experience; CCNA covers OSPF/EIGRP theoretically | Gap |
-| Cisco IOS/IOS-XE | [GAP] — CCNA in progress addresses this gap; no prior job experience | Gap |
-| RADIUS/TACACS | [GAP] — not documented | Gap |
-| DMVPN/GRE/IPSEC | [GAP] — not documented | Gap |
+| Keyword                 | Location in CV                                                       | Status  |
+| ----------------------- | -------------------------------------------------------------------- | ------- |
+| network administrator   | Profile                                                              | Covered |
+| LAN/WAN                 | Skills, VCA bullet 1                                                 | Covered |
+| VLAN                    | Skills, VCA firewall bullet                                          | Covered |
+| TCP/IP                  | Skills, Protocols                                                    | Covered |
+| DHCP                    | Skills, VCA bullet 4                                                 | Covered |
+| firewall                | Skills, VCA bullets 1-2                                              | Covered |
+| VPN                     | VCA remote access bullet                                             | Covered |
+| structured cabling      | VCA bullet 1                                                         | Covered |
+| network troubleshooting | VCA UAG bullet, iKrusher bullet                                      | Covered |
+| network security        | Skills section                                                       | Covered |
+| voice communications    | Skills, VCA VoIP bullet                                              | Covered |
+| SNMP                    | Skills (Protocols)                                                   | Covered |
+| IP subnetting           | Skills                                                               | Covered |
+| CCNA                    | Profile, Certifications                                              | Covered |
+| network management      | Profile                                                              | Covered |
+| BGP/OSPF/EIGRP          | [GAP] — not in job experience; CCNA covers OSPF/EIGRP theoretically  | Gap     |
+| Cisco IOS/IOS-XE        | [GAP] — CCNA in progress addresses this gap; no prior job experience | Gap     |
+| RADIUS/TACACS           | [GAP] — not documented                                               | Gap     |
+| DMVPN/GRE/IPSEC         | [GAP] — not documented                                               | Gap     |
 
 **Coverage Rate:** 15/19 = 79% (above 70% gate; gaps are genuine experience absences, not omissions)
 
 ### Semantic Alignment Check
 
 **Campus network infrastructure ownership:**
+
 - VCA bullet 1 (LAN/WAN, 3 sites, HP Aruba, Fortinet, structured cabling)
 
 **Perimeter security design:**
+
 - VCA firewall bullet (VLAN segmentation, guest isolation, IoT port management)
 - VCA Darktrace bullet
 
 **Voice and data communications integration:**
+
 - VCA VoIP bullet (RingCentral to Zoom migration, call queue routing fix)
 
 **Network device configuration and fault resolution:**
+
 - VCA DMZ connector, UAG bottleneck, DHCP reservations
 - iKrusher Ubiquiti administration and ISP coordination
 
 **Technical documentation and knowledge transfer:**
+
 - iKrusher onboarding runbooks
 - VCA Ajera Cloud login guide, runbooks
 
 **Protocol-level troubleshooting:**
+
 - VCA DHCP, UAG, call routing diagnosis
 
 ### ATS Safety Checklist
@@ -158,4 +171,4 @@ Dylan Nguyen
 
 ---
 
-*Generated using Career Helper skill by Paul Bratcher ([LinkedIn](https://www.linkedin.com/in/paul-bratcher/) | [GitHub](https://github.com/Zal4DW/career-helper)). Found this helpful? Share your success story or suggest improvements on GitHub!*
+_Generated using Career Helper skill by Paul Bratcher ([LinkedIn](https://www.linkedin.com/in/paul-bratcher/) | [GitHub](https://github.com/Zal4DW/career-helper)). Found this helpful? Share your success story or suggest improvements on GitHub!_

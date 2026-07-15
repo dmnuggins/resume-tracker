@@ -14,12 +14,14 @@
 **Expected format:** Structured conversation, likely 45–60 minutes in-person or video
 **Likely interviewers:** IT Network Systems Director (Rudy's director or equivalent senior IT leader)
 **Known interview structure (from prior first-round interviews):**
+
 1. Introduction
 2. What you've been up to since last time
 3. Cisco IOS knowledge
 4. IT and network fundamentals (campus design, outage troubleshooting, non-technical communication)
 
 **Your three objectives:**
+
 1. Land the CCNA as a concrete credential in progress, not a vague aspiration
 2. Show that your VCA work has grown materially since last interview — specific stories, not just titles
 3. Demonstrate that you think like an infrastructure owner, not just a break-fix technician
@@ -34,13 +36,14 @@
 
 **Your answer (2 minutes, spoken):**
 
-> I'm a network and systems administrator with about 4 years of hands-on experience, currently at VCA Consultants where I own the infrastructure across three sites — HP Aruba switches, Fortinet firewall, VLAN segmentation, VoIP, remote access. The scope has kept expanding since I've been there.
+> I'm a network and systems administrator with about 4 years of hands-on experience, currently at VCA Consultants where I administer the infrastructure across three sites comprised of HP Aruba switches, Fortinet firewall, VLAN segmentation, VoIP, remote access tools. The scope has grown since I joined — I've become more familiar with the physical and virtual networking infrastructure, VDI, endpoint management, user deployment, and thin clients. I made an effort to be more involved and aware of the internal network, but my responsibilities are broad by design.
 >
-> The reason I keep coming back for this role specifically is that it's the right kind of network ownership — a campus environment where the network genuinely matters to the organization's daily function, and where a single person can see the whole picture and be accountable for it. That's what I'm working toward.
+> The reason I keep coming back for this role is that I want to go deep on the network side specifically. At VCA I cover a lot of ground, but I can't specialize. A campus environment like this — where the network is the backbone of the organization's daily function and one person owns it end to end — that's the kind of ownership I'm working toward.
 >
-> Since we last spoke, the biggest change is the CCNA. I'm finishing up the studies now, sitting the exam in August. I've been running Packet Tracer labs on OSPF, VLAN trunking, and access lists alongside the production work at VCA, so the Cisco concepts aren't staying theoretical.
+> Since we last spoke, the biggest change is my progress on the CCNA. I'm finishing the studies now, aiming to sit the exam in August. I've been running Packet Tracer labs — OSPF, VLAN trunking, access lists — and connecting what I'm learning to the production environment at VCA, so it's not staying theoretical.
 
 **Key points to hit:**
+
 - Current scope (3 sites, specific hardware)
 - Why this role specifically (don't make it sound like you're job hunting)
 - CCNA as the material change — be specific about the August date
@@ -53,7 +56,7 @@
 
 **Your answer:**
 
-> Honestly, the honest answer from the last interview was that my Cisco IOS experience was conceptual rather than operational. That was the gap. The CCNA is my direct response to that — it forces me to go beyond knowing the concepts and actually configure them. I've been practicing in Packet Tracer: OSPF neighbor setup, VLAN trunking, ACLs, interface configuration. And at VCA the network scope has grown, so I'm coming in with more production troubleshooting behind me than I had last time.
+> Honestly, the honest answer from the last interview was that my Cisco IOS experience was superficial. Since picking up my studies for the CCNA I force myself to go beyond knowing the concepts and actually work with lab based and production side configurations. I've been practicing in Packet Tracer: OSPF neighbor setup, VLAN trunking, ACLs, interface configuration. And at VCA the network scope has grown, so I'm coming in with more production troubleshooting behind me than I had last time.
 
 ---
 
@@ -150,18 +153,18 @@ interface GigabitEthernet0/1
 
 Lead with the ones you'd reach for first, not a memorized list:
 
-| Command | When you'd use it |
-|---|---|
-| `show ip interface brief` | First thing — are all interfaces up? |
-| `show interfaces gi0/0` | Input/output errors suggest physical or duplex issues |
-| `show vlan brief` | Confirm port-to-VLAN assignments |
-| `show interfaces trunk` | Confirm VLANs are passing on trunk ports |
-| `show ip route` | Is the route present? Is the next-hop correct? |
-| `show cdp neighbors detail` | Map connected devices with IPs |
-| `show lldp neighbors` | Same, but open standard — works with non-Cisco |
-| `show spanning-tree` | STP topology — check for blocked or inconsistent ports |
-| `show ip ospf neighbor` | Are OSPF adjacencies up? |
-| `show mac address-table` | Which port is a specific MAC address on? |
+| Command                     | When you'd use it                                      |
+| --------------------------- | ------------------------------------------------------ |
+| `show ip interface brief`   | First thing — are all interfaces up?                   |
+| `show interfaces gi0/0`     | Input/output errors suggest physical or duplex issues  |
+| `show vlan brief`           | Confirm port-to-VLAN assignments                       |
+| `show interfaces trunk`     | Confirm VLANs are passing on trunk ports               |
+| `show ip route`             | Is the route present? Is the next-hop correct?         |
+| `show cdp neighbors detail` | Map connected devices with IPs                         |
+| `show lldp neighbors`       | Same, but open standard — works with non-Cisco         |
+| `show spanning-tree`        | STP topology — check for blocked or inconsistent ports |
+| `show ip ospf neighbor`     | Are OSPF adjacencies up?                               |
+| `show mac address-table`    | Which port is a specific MAC address on?               |
 
 ---
 
@@ -169,7 +172,7 @@ Lead with the ones you'd reach for first, not a memorized list:
 
 **Answer:**
 
-OSPF neighbors form when two routers exchange Hello packets and agree on: same area ID, same Hello/Dead timers, same subnet and mask, same network type, and authentication if configured. On a broadcast network like Ethernet, they elect a DR and BDR, then form Full adjacency with those.
+OSPF neighbors form when two routers exchange Hello packets and agree on: same area ID, same Hello/Dead timers, same subnet and mask, same network type, and authentication if configured. On a broadcast network like Ethernet, they elect a DR (Designated Router) and BDR (Backup Designated), then form Full adjacency with those.
 
 **If neighbors won't form, I'd check in this order:**
 
@@ -191,7 +194,7 @@ OSPF neighbors form when two routers exchange Hello packets and agree on: same a
 
 ### "Have you worked with BGP?"
 
-> I understand BGP at the conceptual level — AS numbers, eBGP between different autonomous systems, iBGP within an AS, and path selection using attributes like AS path and local preference rather than a metric. I haven't administered a BGP session in production. At VCA we're single-ISP with a static default route to the provider. For a dual-ISP campus setup where BGP would appear for failover or load sharing, I'd work from documentation and test thoroughly in a lab before any production change.
+> I understand BGP at the conceptual level — AS (Autonomous System) numbers, eBGP (external BGP) between different autonomous systems, iBGP (internal BGP) within an AS, and path selection using attributes like AS path and local preference rather than a metric. I haven't administered a BGP session in production. At VCA we're actually dual-ISP — AT&T fiber as primary, Spectrum as failover — but that failover is handled through the Fortinet's SD-WAN and policy-based routing rather than BGP, since neither circuit is set up for provider-side peering. For a campus setup where BGP is genuinely in play for ISP multihoming, I'd work from documentation and test thoroughly in a lab before any production change.
 
 ---
 
@@ -276,6 +279,7 @@ OSPF neighbors form when two routers exchange Hello packets and agree on: same a
 **Real example to tie in:** The Fortinet rollback story from VCA — same principle. Documented the before state, made the change, something went wrong, reverted immediately because the context was there.
 
 **Follow-ups to prepare for:**
+
 - "What if the device doesn't come back up after the reload?" — console access is your out-of-band recovery. If you don't have console access, you need ROMMON or physical access to recover.
 - "Have you done this on a live production device?" — honest answer: Fortinet firmware upgrades at VCA, not Cisco IOS specifically. Same discipline applies.
 
@@ -321,6 +325,27 @@ OSPF neighbors form when two routers exchange Hello packets and agree on: same a
 
 ---
 
+### "What are your thoughts on AI?" / "How do you use AI in your work?"
+
+**What they're assessing:** Whether you have a grounded, practical relationship with AI tools or an uncritical one — colleges are cautious about data governance, and they want to know you won't put institutional data at risk chasing convenience.
+
+**Your answer (spoken conversationally):**
+
+> I see it as a tool, not a replacement for judgment — especially in infrastructure. Day to day it's most useful for automating the mundane and tedious: drafting scripts, spotting patterns in log output, or getting a first pass at documentation that I then verify and rewrite myself. It's also sped up how I close knowledge gaps — working across Fortinet, Aruba, and now Cisco IOS for the CCNA, it helps me translate concepts between vendor syntaxes faster than digging through three separate sets of documentation, and it's useful for scaffolding scripts or tooling I wouldn't otherwise have time to build from scratch.
+>
+> Where I draw a line is generative AI for anything creative — that's a human domain, and I don't think a model should be doing the artistic or original-thinking part of someone's job. On the infrastructure side, I'm careful about data privacy specifically: I won't put network topology, configs, or credentials into a public LLM. Privately owned models still mean your data is sitting on someone else's infrastructure, so anything sensitive gets genericized first or kept out entirely — the same discipline I'd apply to any third-party tool that touches internal data.
+>
+> Bottom line: it speeds up the mechanical parts of the job, but the validation, the judgment calls, and anything that touches production still go through me.
+
+**Real example to tie in:** Studying for the CCNA, I've used AI to sanity-check why an OSPF adjacency wasn't forming or to explain an unfamiliar IOS error message before I dug into the Cisco docs myself — same "verify before you trust it" discipline I'd apply to anything AI-assisted that touches a live network.
+
+**Follow-ups to prepare for:**
+
+- **"Would you use AI to help write network configs?"** — For drafting or explaining syntax, yes. For anything going into production, no — same as anything untested: it gets validated in a lab first, same discipline as the Cisco gap answer.
+- **"How would you handle a staff or faculty member wanting to use AI tools with sensitive data?"** — That's a policy and awareness conversation as much as a technical one: know what's allowed under the college's data governance policy, and make sure people understand that anything typed into a public LLM should be treated as potentially non-confidential.
+
+---
+
 ### "What would your first 30 days look like here?"
 
 > Discovery first. I'd run `show cdp neighbors detail` and `show lldp neighbors` on the core and distribution switches to map what's connected and where. Pull routing tables, VLAN tables, and all configs into a Git repo. Get SNMP monitoring set up if it isn't already — either with what's in place or with something like LibreNMS.
@@ -334,18 +359,23 @@ OSPF neighbors form when two routers exchange Hello packets and agree on: same a
 ## STAR stories (pre-prepared, adaptable)
 
 ### STAR 1: IP phone LLDP fix (VoIP, VLAN, layer 2 troubleshooting)
+
 See Story A above. Use for: troubleshooting questions, VoIP questions, "tell me about a recent technical problem."
 
 ### STAR 2: Fortinet rollback (change management, documentation, incident response)
+
 See Story B above. Use for: "tell me about a time something went wrong," "how do you manage risk during changes," "why is documentation important."
 
 ### STAR 3: UAG bottleneck (systematic troubleshooting, performance diagnosis)
+
 See Story C above. Use for: "how do you troubleshoot a network issue," "describe your diagnostic approach," "tell me about a time you had to dig into a performance problem."
 
 ### STAR 4: DMZ connector (security, network design decision)
+
 See Story D above. Use for: "tell me about a network design decision you made," "how do you think about network security," "describe a time you had to balance access with security."
 
 ### STAR 5: BitLocker rollout at Five Acres (scale, coordination, regulated environment)
+
 - **Situation:** 150+ Windows machines in a healthcare environment needed BitLocker encryption across two business days.
 - **Task:** Coordinate the rollout without disrupting clinical operations.
 - **Action:** Staged the deployment by department, coordinated with IT leads at each location, communicated the schedule to department heads so they knew when their devices would be briefly unavailable.
@@ -359,22 +389,27 @@ See Story D above. Use for: "tell me about a network design decision you made," 
 ### For the IT Network Systems Director
 
 **1. "What does the network infrastructure look like today — how is it tiered, and what's the mix of hardware?"**
+
 - Why ask: Shows you're already thinking about what you'd be inheriting. Signals that you know what questions to ask.
 - Listen for: Scale, complexity, any known technical debt, Cisco vs. mixed environment.
 
 **2. "What did the previous person in this role do well, and where were the gaps they left?"**
+
 - Why ask: Honest answer tells you what the real expectations are, and what problems you'd walk into.
 - Listen for: If they struggle to answer, the role may not be well-defined. If they're candid, that's a good sign.
 
 **3. "The CCNA covers the concepts, but I'd be learning your specific environment on day one. What's the biggest technical gap you'd expect someone to need time to close?"**
+
 - Why ask: Shows self-awareness and proactive thinking. Invites them to be honest about complexity.
 - Listen for: Whether they have a realistic picture of the onboarding curve.
 
 **4. "How does the network team interact with the broader IT team here? Is this a solo network role or are there other people touching infrastructure?"**
+
 - Why ask: Critical for understanding scope, support, and escalation paths.
 - Listen for: Whether you'd have backup for on-call or vacations, or whether you're the single point of failure.
 
 **5. "What's the most urgent project or problem that needs attention in the first few months?"**
+
 - Why ask: Shows you want to contribute, not just settle in. Gives you something to follow up on post-interview.
 - Listen for: Anything that suggests the network is in poor shape vs. normal ongoing work.
 
@@ -387,6 +422,7 @@ See Story D above. Use for: "tell me about a network design decision you made," 
 **If raised:** "You haven't actually administered Cisco in production."
 
 **Your response:**
+
 > That's accurate, and I'd rather be direct about it than oversell it. My production platforms have been HP Aruba and Fortinet. The CCNA is my direct response to that gap — it forces Cisco IOS fluency through structured curriculum and hands-on labs. The troubleshooting approach and the underlying protocols are the same regardless of vendor. I'd validate anything Cisco-specific in a lab before applying it to a live network here, which is the same discipline I apply at VCA when touching anything I haven't done before.
 
 **Do not say:** "I know Cisco well" — they will ask follow-up questions that will expose the gap. Honest framing is more credible.
@@ -414,6 +450,7 @@ See Story D above. Use for: "tell me about a network design decision you made," 
 **If raised:** "We've interviewed you twice. Why should this time be different?"
 
 **Your response:**
+
 > Two things are materially different. The first is the CCNA — I'm completing it in August, which directly addresses the Cisco gap from the last interview. The second is that the scope at VCA has grown — I've been dealing with more complex network issues than I had when I interviewed last time, and I can speak to specific problems I've solved that I couldn't have talked about before. The role is still the right target. I'm just better positioned for it now.
 
 ---
@@ -423,6 +460,7 @@ See Story D above. Use for: "tell me about a network design decision you made," 
 **If raised:** "You've worked in enterprise/corporate settings, not education."
 
 **Your response:**
+
 > The infrastructure fundamentals are the same — VLANs, routing, PoE, wireless, security policy — but the stakeholder mix is different. A college has faculty, students, administration, and guests all on the same campus with different needs and different expectations for how IT communicates with them. I've had to calibrate communication differently depending on whether I'm talking to a VP, an end user, or a vendor, and I'd apply that same awareness here.
 
 ---
@@ -436,39 +474,47 @@ See Story D above. Use for: "tell me about a network design decision you made," 
 ---
 
 ### Tuesday July 14 (tonight) — Full read-through
+
 - [ ] Read the entire document once, cover to cover
 - [ ] Goal: know what sections exist and roughly where your answers live — not memorization yet
 
 ### Wednesday July 15 — Introduction and STAR stories
+
 - [ ] Practice "tell me about yourself" out loud, timed at 2 minutes
 - [ ] Say each of Stories A–D out loud — focus on the key phrase at the end of each
 - [ ] Practice the "why are you applying again" and "why are you leaving" answers out loud
 
 ### Thursday July 16 — Cisco IOS
+
 - [ ] Cover the show commands table — for each one, say out loud what it tells you and when you'd reach for it
 - [ ] Packet Tracer: configure a trunk port from scratch, verify with `show interfaces trunk` and `show vlan brief`
 - [ ] Practice the trunk port config answer and OSPF neighbor formation answer verbally
 
 ### Friday July 18 – Sunday morning July 20 — Vacation (light, phone-friendly)
+
 - [ ] Fri or Sat: reread the campus design and troubleshooting sections — no drilling, just absorb
 - [ ] Sat or Sun morning: reread the DR section and appliance upgrade section
 - [ ] Sun morning: pick your 3 questions to ask — commit to them now so they're not a decision on Monday
 
 ### Monday July 21 — Packet Tracer lab + concerns
+
 - [ ] Packet Tracer: build a small multi-layer topology (core → distribution → access), configure VLANs, trunks, SVIs, OSPF between L3 devices — validate with show commands
 - [ ] Work through the "potential concerns" section out loud: Cisco gap framing, third application framing
 
 ### Tuesday July 22 — Full mock interview (no notes)
+
 - [ ] Run through the full interview start to finish as if it's real: intro, VCA stories, Cisco questions, fundamentals, concerns, your questions
 - [ ] Time yourself — should fit in 45–60 minutes
 - [ ] Note anything that felt vague or slow; spend 20 minutes drilling those spots afterward
 
 ### Wednesday July 23 — Day before (light only)
+
 - [ ] Read through the document once — calm pass, no drilling
 - [ ] Confirm logistics: location or video link, parking if in-person
 - [ ] Early to bed
 
 ### Thursday July 23 — Interview day (9:30am)
+
 - [ ] Morning: reread only the intro answer and your top 2–3 STAR stories — nothing new
 - [ ] Arrive 10 minutes early / join the call 2 minutes before
 - [ ] Water nearby — you'll be talking for an hour
@@ -479,11 +525,13 @@ See Story D above. Use for: "tell me about a network design decision you made," 
 ## Practical preparation checklist
 
 ### Day before
+
 - [ ] Review this document
 - [ ] Confirm 3 questions to ask (from the list above)
 - [ ] Confirm interview time and location/link
 
 ### Day of
+
 - [ ] Arrive 10 minutes early
 - [ ] Have CV visible (for reference during stories)
 - [ ] Water nearby — you'll be talking
@@ -510,5 +558,5 @@ Dylan Nguyen
 
 ---
 
-*Interview Preparation | Network Administrator, Whittier College | Third Application — Round 1 | July 2026*
-*Career Helper Plugin | Prosper AI Consulting, UK*
+_Interview Preparation | Network Administrator, Whittier College | Third Application — Round 1 | July 2026_
+_Career Helper Plugin | Prosper AI Consulting, UK_

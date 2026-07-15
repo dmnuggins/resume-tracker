@@ -48,6 +48,9 @@ _May 2024 – Present_
 - Managed LAN/WAN infrastructure across 3 sites (LA, Denver, Orange), including switches, routers, and firewall (e.g. HP Aruba, Dell EMC hosts, TrueNAS storage)
 - Configured and maintained secure remote access to internal desktop + server VM's for remote users using Horizon View + DUO authentication
 - Troubleshot connectivity and throughput issues with Horizon Client connections to server side VM's, ended up being a UAG bottleneck that resulted in lagging out our remote users
+- Toubleshot IP phone one-touch deployment failure on 3rd floor. Determined it was an LLDP configuration in the access switch blocking the one-touch deployment.
+- Created a firewall rule that disconnected our Denver servers. The rule was to limit specific traffic to allow for thin clients on the Denver network to be detectable by the manager server on our Orange office network. Quick resolution by already documenting the changes i'm actively making and to be able to quickly reverse course in case of something catastrophic.
+-
 
 ### Endpoint & Device Management
 
@@ -114,6 +117,7 @@ _May 2024 – Present_
 - Used Darktrace to monitor and triage security incidents; tuned behavioral parameters to reduce false positives while keeping effective threat detection in place
 - Maintained endpoint security through Omnissa Horizon instant clone deployment, Microsoft Defender, and a third-party security agent for malware detection
 - Re-enrolled BYOD endpoints from mergers and acquisitions into Intune and deployed ScreenConnect for fast remote admin access
+- SSH key configurations for GitLab instances
 
 ### Linux Servers
 
