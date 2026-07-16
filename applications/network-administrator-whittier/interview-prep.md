@@ -36,11 +36,11 @@
 
 **Your answer (2 minutes, spoken):**
 
-> I'm a network and systems administrator with about 4 years of hands-on experience, currently at VCA Consultants where I administer the infrastructure across three sites comprised of HP Aruba switches, Fortinet firewall, VLAN segmentation, VoIP, remote access tools. The scope has grown since I joined — I've become more familiar with the physical and virtual networking infrastructure, VDI, endpoint management, user deployment, and thin clients. I made an effort to be more involved and aware of the internal network, but my responsibilities are broad by design.
+> I've been continuing my work as a systems and network admin at VCA Consultants. Since I joined, our user base has grown and management scope has expanded to 2 office sites plus a large remote workforce. I've gotten more involved with the physical and virtual networking infrastructure — firewall rules, access switch configuration, VLAN management — alongside my usual IT responsibilities: administering our VDI, remote endpoints, user deployment, and VMware server infrastructure. I made an effort to be more involved and aware of the internal network, but my responsibilities are broad by design.
 >
-> The reason I keep coming back for this role is that I want to go deep on the network side specifically. At VCA I cover a lot of ground, but I can't specialize. A campus environment like this — where the network is the backbone of the organization's daily function and one person owns it end to end — that's the kind of ownership I'm working toward.
+> The reason I keep coming back for this role is that I want to go deep on the network side specifically. At VCA I cover a lot of ground, but the breadth of the role means I can't specialize. A campus environment like Whittier — where the network is the backbone of daily operations and one person owns it end to end — is exactly the kind of ownership and depth I've been working toward.
 >
-> Since we last spoke, the biggest change is my progress on the CCNA. I'm finishing the studies now, aiming to sit the exam in August. I've been running Packet Tracer labs — OSPF, VLAN trunking, access lists — and connecting what I'm learning to the production environment at VCA, so it's not staying theoretical.
+> Since we last spoke, the biggest change is my progress on the CCNA. I'm wrapping up coursework this month and sitting the exam in late August. I've been running Packet Tracer labs and applying what I'm learning to the production environment at VCA, so it isn't staying theoretical — that's the kind of practical, hands-on effort I'd bring to Whittier College.
 
 **Key points to hit:**
 
@@ -72,10 +72,10 @@ These are the specific VCA stories you should be ready to tell in depth. Each on
 
 **STAR:**
 
-- **Situation:** Rolling out IP phones across the local office. Deployment stalled — half the office phones wouldn't complete one-touch provisioning.
+- **Situation:** Rolling out Poly Edge E500 IP phones across the local office on Zoom Phone. Deployment stalled — half the office phones wouldn't complete one-touch provisioning to the Zoom provisioning server.
 - **Task:** Diagnose and resolve the issue without disrupting the rest of the office.
-- **Action:** Traced the provisioning process: LLDP should be advertising the voice VLAN to the phones on connection so they can request the right DHCP scope. Ran `show lldp neighbors` on the access switch and confirmed LLDP wasn't sending the expected TLVs. Corrected the LLDP-MED configuration on the access port, confirmed the phones were picking up the voice VLAN, finished the rollout.
-- **Result:** Full office deployed. Root cause documented so the same configuration went onto any new phone ports from that point.
+- **Action:** Worked with our IT Director to check the phone configs, port configs, and VLAN assignments first — those all checked out. Dug into the HP Aruba switch's configuration options next, working through the CLI with help from ChatGPT and Zoom's documentation for reference. Found that LLDP wasn't enabled on the switch, confirmed against HP Aruba's own documentation. Toggled LLDP on.
+- **Result:** Phones immediately connected to the Zoom provisioning server and completed one-touch deployment. Root cause documented so LLDP is enabled by default on any new phone port configuration going forward.
 
 **Key phrase:** "The protocols tell you exactly what should be happening — the diagnostic work is just matching what you're seeing to what the protocol says should be true."
 
@@ -121,6 +121,21 @@ These are the specific VCA stories you should be ready to tell in depth. Each on
 - **Task:** Enable the access without creating a firewall hole into the internal network.
 - **Action:** Configured a secure connector server in the DMZ. External devices connect to the DMZ host; the DMZ host has a restricted, encrypted connection to the internal management VLAN. Nothing from outside reaches the internal network directly.
 - **Result:** External administration capability without perimeter exposure. Firewall policy documented with the rationale for the DMZ architecture.
+
+---
+
+### Story E: Access token conflict during acquisition scoping (interpersonal conflict, cross-team communication)
+
+**When to use:** "Tell me about a conflict with a coworker" / "Tell me about a time you disagreed with someone" / any interpersonal or cross-team communication question
+
+**STAR:**
+
+- **Situation:** VCA was scoping a potential migration of a recently acquired company's production repos to a self-hosted Git instance, for better long-term management. It was exploratory only — no migration had been approved.
+- **Task:** Assess feasibility without disrupting the acquired company's existing deployment pipeline or overstepping into systems that weren't mine yet.
+- **Action:** I requested an access token from their team so I could look at repo structure. To me it was routine, low-stakes exploratory access. From their side, an outside admin requesting elevated access to their production repos looked like an attempt to take over and put their deployments at risk — a reasonable read if you don't have the context I had. It escalated to the point that the conversation got moved up to both of our respective managers, who clarified intent and scope, and things were smoothed over from there.
+- **Result:** Scoping continued collaboratively. More importantly, I walked away with a concrete lesson about how I initiate requests like that going forward.
+
+**Key phrase:** "I need to be as transparent about my intent as the other person needs to be to actually trust it — not just what I think is sufficient — and to empathize with their position before I make a request that touches something they own."
 
 ---
 
@@ -247,6 +262,24 @@ OSPF neighbors form when two routers exchange Hello packets and agree on: same a
 > I also follow up in writing so people have a record of what happened and what was done. It avoids repeat questions and builds trust that things are being handled.
 
 **Specific Whittier context:** A college has faculty who are not technical but who have strong expectations. Dean's office, admissions, financial aid — these are the stakeholders you'll need to communicate with. Show that you understand that dynamic.
+
+---
+
+### "Tell me about a time you had conflict with another employee" / "What did you do when there was conflict with a coworker?"
+
+**What they're assessing:** Whether you can handle interpersonal friction professionally, de-escalate rather than dig in, and take a real learning point away rather than just describing how you were right.
+
+**Your answer:**
+
+> This came up during a project where we were scoping a potential migration of a recently acquired company's production repos onto a self-hosted Git instance, so everything could be managed more consistently going forward. It was still exploratory on our side — no migration had been approved, we were just assessing feasibility.
+>
+> As part of that, I requested an access token from their team so I could look at the repo structure. To me it was a routine, low-stakes ask. But from their side, someone outside their team requesting elevated access to their production repos looked like we were trying to take over and potentially put their deployments at risk. That's a completely reasonable read if you don't have the context I had.
+>
+> It escalated enough that the conversation got moved up to both of our managers, who clarified the intent and scope, and it got smoothed over from there.
+>
+> What I took away from it: I need to be as transparent about my intent as the other person needs to be to actually trust it, not just what I think is sufficient, and to put myself in their position before I make a request that touches something they own. Especially right after an acquisition, people are already on edge about losing control of their systems, so the burden's on me to lead with the "why" before the "what."
+
+**Key phrase:** "Access requests read very differently depending on which side of an acquisition you're on. Leading with the intent, not just the ask, would have prevented the whole thing."
 
 ---
 
@@ -381,6 +414,10 @@ See Story D above. Use for: "tell me about a network design decision you made," 
 - **Action:** Staged the deployment by department, coordinated with IT leads at each location, communicated the schedule to department heads so they knew when their devices would be briefly unavailable.
 - **Result:** 150+ machines encrypted in 2 business days. No service disruption complaints.
 - **Use for:** "Tell me about managing a large-scale change," "how do you coordinate with stakeholders," "tell me about a time you had time pressure."
+
+### STAR 6: Access token conflict during acquisition scoping (interpersonal conflict, cross-team communication)
+
+See Story E above. Use for: "tell me about a conflict with a coworker," "tell me about a time you disagreed with someone," "how do you handle interpersonal friction."
 
 ---
 
@@ -532,7 +569,7 @@ See Story D above. Use for: "tell me about a network design decision you made," 
 
 ### Day of
 
-- [ ] Arrive 10 minutes early
+- [ ] Arrive 30 minutes early
 - [ ] Have CV visible (for reference during stories)
 - [ ] Water nearby — you'll be talking
 - [ ] Take 3 breaths before joining
