@@ -36,11 +36,11 @@
 
 **Your answer (2 minutes, spoken):**
 
-> I've been continuing my work as a systems and network admin at VCA Consultants. Since I joined, our user base has grown and management scope has expanded to 2 office sites plus a large remote workforce. I've gotten more involved with the physical and virtual networking infrastructure — firewall rules, access switch configuration, VLAN management — alongside my usual IT responsibilities: administering our VDI, remote endpoints, user deployment, and VMware server infrastructure. I made an effort to be more involved and aware of the internal network, but my responsibilities are broad by design.
+> I've been continuing my work as a systems and network admin at VCA Consultants. Since I joined, our user base has grown and management scope has expanded to 2 office sites plus a large remote workforce. I've gotten more involved with the physical and virtual networking infrastructure — firewall rules, access switch configuration, VMware virtual switch config, VLAN management — alongside my usual IT responsibilities: administering our VDI, remote endpoints, user deployment, and VMware server infrastructure. I made an effort to be more involved and aware of the internal network, but my responsibilities are broad by design.
 >
-> The reason I keep coming back for this role is that I want to go deep on the network side specifically. At VCA I cover a lot of ground, but the breadth of the role means I can't specialize. A campus environment like Whittier — where the network is the backbone of daily operations and one person owns it end to end — is exactly the kind of ownership and depth I've been working toward.
+> The reason I keep coming back for this role is that I want to go deep on the network side specifically. At VCA I cover a lot of ground, but the breadth of the role means I can't specialize. I hear online and amongst my peers that no one really likes to deal with the network, but to me, I see it as an opportunity to push myself and take the path least treaded. That and an opportunity to take ownership of something that can both impact and empower hundreds of people (students, and faculty alike)
 >
-> Since we last spoke, the biggest change is my progress on the CCNA. I'm wrapping up coursework this month and sitting the exam in late August. I've been running Packet Tracer labs and applying what I'm learning to the production environment at VCA, so it isn't staying theoretical — that's the kind of practical, hands-on effort I'd bring to Whittier College.
+> Since we last spoke, the biggest change is my progress on the CCNA. I'm wrapping up coursework this month and sitting the exam in late August. I've been running Packet Tracer labs and applying what I'm learning, making the connections between the theoretical with the practical applications in our production infrastructure.
 
 **Key points to hit:**
 
@@ -210,6 +210,8 @@ OSPF neighbors form when two routers exchange Hello packets and agree on: same a
 ### "Have you worked with BGP?"
 
 > I understand BGP at the conceptual level — AS (Autonomous System) numbers, eBGP (external BGP) between different autonomous systems, iBGP (internal BGP) within an AS, and path selection using attributes like AS path and local preference rather than a metric. I haven't administered a BGP session in production. At VCA we're actually dual-ISP — AT&T fiber as primary, Spectrum as failover — but that failover is handled through the Fortinet's SD-WAN and policy-based routing rather than BGP, since neither circuit is set up for provider-side peering. For a campus setup where BGP is genuinely in play for ISP multihoming, I'd work from documentation and test thoroughly in a lab before any production change.
+>
+> Familiar with SD-WAN technologies like VeloCloud, which is what we use to create secure network tunnel from our remote offices to HQ to allow end user access to internal resources (VM's + File servers)
 
 ---
 
@@ -517,20 +519,20 @@ See Story E above. Use for: "tell me about a conflict with a coworker," "tell me
 
 ### Wednesday July 15 — Introduction and STAR stories
 
-- [ ] Practice "tell me about yourself" out loud, timed at 2 minutes
-- [ ] Say each of Stories A–D out loud — focus on the key phrase at the end of each
-- [ ] Practice the "why are you applying again" and "why are you leaving" answers out loud
+- [x] Practice "tell me about yourself" out loud, timed at 2 minutes
+- [x] Say each of Stories A–D out loud — focus on the key phrase at the end of each
+- [x] Practice the "why are you applying again" and "why are you leaving" answers out loud
 
 ### Thursday July 16 — Cisco IOS
 
-- [ ] Cover the show commands table — for each one, say out loud what it tells you and when you'd reach for it
-- [ ] Packet Tracer: configure a trunk port from scratch, verify with `show interfaces trunk` and `show vlan brief`
-- [ ] Practice the trunk port config answer and OSPF neighbor formation answer verbally
+- [x] Cover the show commands table — for each one, say out loud what it tells you and when you'd reach for it
+- [x] Packet Tracer: configure a trunk port from scratch, verify with `show interfaces trunk` and `show vlan brief`
+- [x] Practice the trunk port config answer and OSPF neighbor formation answer verbally
 
 ### Friday July 18 – Sunday morning July 20 — Vacation (light, phone-friendly)
 
-- [ ] Fri or Sat: reread the campus design and troubleshooting sections — no drilling, just absorb
-- [ ] Sat or Sun morning: reread the DR section and appliance upgrade section
+- [x] Fri or Sat: reread the campus design and troubleshooting sections — no drilling, just absorb
+- [x] Sat or Sun morning: reread the DR section and appliance upgrade section
 - [ ] Sun morning: pick your 3 questions to ask — commit to them now so they're not a decision on Monday
 
 ### Monday July 21 — Packet Tracer lab + concerns
