@@ -4,6 +4,7 @@
 **Target Role:** Network Administrator
 **Company:** Whittier College
 **Interview Stage:** Third application — Round 1
+**Interview Date:** Wednesday, July 29, 2026, 10:00am (rescheduled from Thursday, July 23)
 **Interviewer:** IT Network Systems Director (Whittier College)
 **Context:** Third application. You have passed CV screening twice and reached the first-round interview both times but did not advance past it either time. Prior first-round interviews covered Cisco IOS knowledge and IT/network fundamentals. The CCNA in progress (expected August 2026) is your primary differentiator — it directly addresses the Cisco gap that likely caused you not to advance.
 
@@ -40,7 +41,7 @@
 >
 > The reason I keep coming back for this role is that I want to go deep on the network side specifically. At VCA I cover a lot of ground, but the breadth of the role means I can't specialize. I hear online and amongst my peers that no one really likes to deal with the network, but to me, I see it as an opportunity to push myself and take the path least treaded. That and an opportunity to take ownership of something that can both impact and empower hundreds of people (students, and faculty alike)
 >
-> Since we last spoke, the biggest change is my progress on the CCNA. I'm wrapping up coursework this month and sitting the exam in late August. I've been running Packet Tracer labs and applying what I'm learning, making the connections between the theoretical with the practical applications in our production infrastructure.
+> Since we last spoke, the biggest change is my progress on the CCNA. I'm wrapping up coursework this month and sitting the exam in late August. I've been running Packet Tracer labs and applying what I'm learning, making the connections between the theoretical with the practical applications in our production infrastructure. Continuing to learn and grow, and even more focused on empowering users through tech, when given the opportunity.
 
 **Key points to hit:**
 
@@ -391,6 +392,135 @@ OSPF neighbors form when two routers exchange Hello packets and agree on: same a
 
 ---
 
+## Section 5: Supplemental technical topics (extra prep time — added after reschedule)
+
+The reschedule to July 29 opened up roughly a week of additional study time. These are fundamentals that fit the "IT and network fundamentals" portion of the interview but weren't drilled in the original plan — subnetting, STP, DHCP/DNS, NAT, common ports, and wireless/security basics. Cisco IOS-specific gaps are already well covered in Section 3; this section rounds out the broader network administrator knowledge a generalist question might probe.
+
+---
+
+### Subnetting / VLSM
+
+**Be ready to do this on a whiteboard or verbally, not just recognize it.**
+
+> A /24 gives you 256 addresses, 254 usable. To carve a /24 into 4 subnets, borrow 2 bits → /26, giving 4 subnets of 64 addresses (62 usable) each. The formula: usable hosts = 2^(32-prefix) - 2.
+
+**Quick reference:**
+
+| CIDR | Subnet mask     | Usable hosts             |
+| ---- | --------------- | ------------------------ |
+| /24  | 255.255.255.0   | 254                      |
+| /25  | 255.255.255.128 | 126                      |
+| /26  | 255.255.255.192 | 62                       |
+| /27  | 255.255.255.224 | 30                       |
+| /28  | 255.255.255.240 | 14                       |
+| /30  | 255.255.255.252 | 2 (point-to-point links) |
+
+**Practice out loud:** "Given 10.10.10.0/24, give me 4 equal subnets" → /26s: .0/26, .64/26, .128/26, .192/26. Redo this a few times with different starting prefixes until it's fast.
+
+**Why they'd ask:** VLSM efficiency matters on a campus with many differently-sized VLANs (a 20-person department vs. a 500-student dorm building) — wasting a /24 on a 20-host VLAN is a real design smell they may probe for.
+
+---
+
+### Spanning Tree Protocol (STP)
+
+> STP prevents Layer 2 loops when there's physical redundancy between switches — without it, a redundant link would cause a broadcast storm. It works by electing a root bridge (lowest bridge ID), then every other switch calculates its lowest-cost path to the root. Ports end up in one of these roles: root port (best path to root), designated port (forwards for a segment), or blocking/discarding (would create a loop, so it's disabled from forwarding but still listens for topology changes).
+
+**Port states (STP → RSTP mapping):** Blocking → Discarding, Listening → Discarding, Learning → Learning, Forwarding → Forwarding.
+
+**Practical config commands:**
+
+```
+spanning-tree portfast          # access ports only — skip listening/learning, come up fast
+spanning-tree bpduguard enable  # shut the port if it receives a BPDU (rogue switch protection)
+```
+
+**If asked "why would you enable portfast + bpduguard on access ports":** "Portfast gets end devices online instantly instead of waiting ~30 seconds through the STP states. Bpduguard is the safety net — if someone plugs an unauthorized switch into that port, it shuts down instead of participating in the topology."
+
+**Troubleshooting:** `show spanning-tree` — look for a port stuck in blocking that shouldn't be, or unexpected topology change counts (indicates flapping links or a loop).
+
+---
+
+### DHCP
+
+> DHCP uses a 4-step process: DORA — Discover (client broadcasts), Offer (server responds with an IP), Request (client requests that specific IP), Acknowledge (server confirms the lease). For a multi-VLAN environment, each VLAN's SVI needs either a local DHCP scope or an `ip helper-address` pointing at a central DHCP server, since DHCP broadcasts don't cross VLAN boundaries on their own.
+
+**If asked to troubleshoot "client isn't getting an IP":**
+
+1. Is the port on the right VLAN? (`show vlan brief` / `show interfaces switchport`)
+2. Is there an `ip helper-address` configured on that VLAN's SVI, pointing to the right DHCP server?
+3. Is the DHCP scope for that VLAN not exhausted? (`show ip dhcp pool` / check on the server)
+4. Client-side: has the client actually sent a DHCP discover? (rules out NIC/driver issue)
+
+---
+
+### DNS
+
+> DNS resolves names to IPs via a hierarchy: root servers → TLD servers → authoritative servers, with recursive resolvers (often the campus's own DNS server, or an ISP's) doing the lookup on behalf of clients and caching results per the TTL.
+
+**Common record types to know cold:** A (IPv4), AAAA (IPv6), CNAME (alias), MX (mail), TXT (SPF/DKIM/verification), PTR (reverse lookup), NS (nameserver delegation).
+
+**If asked "how would you troubleshoot 'the site won't load'":** "First isolate whether it's DNS or connectivity — `nslookup`/`dig` the hostname. If it resolves but doesn't connect, it's routing/firewall. If it doesn't resolve, check the DNS server is reachable, check the record exists and is correct, check for a stale cache (`ipconfig /flushdns` client-side)."
+
+---
+
+### NAT
+
+> NAT translates private addresses to public ones. Static NAT is a fixed 1:1 mapping — used for something that needs a consistent public-facing IP, like a mail server. Dynamic NAT pulls from a pool of public IPs on a first-come basis. PAT (Port Address Translation, aka NAT overload) is what most networks actually run day to day — many internal hosts share one public IP, distinguished by port number. That's how an entire campus can get out to the internet through a small number of public IPs.
+
+---
+
+### Common ports and protocols
+
+Know these without hesitating — a fundamentals question may just rattle off a service and ask for the port:
+
+| Port     | Protocol/Service       |
+| -------- | ---------------------- |
+| 22       | SSH                    |
+| 23       | Telnet (legacy, avoid) |
+| 53       | DNS                    |
+| 67/68    | DHCP (server/client)   |
+| 80       | HTTP                   |
+| 443      | HTTPS                  |
+| 389/636  | LDAP / LDAPS           |
+| 3389     | RDP                    |
+| 161/162  | SNMP / SNMP traps      |
+| 500/4500 | IPsec (IKE / NAT-T)    |
+| 179      | BGP                    |
+
+---
+
+### Wireless fundamentals
+
+> 2.4GHz has better range and wall penetration but only 3 non-overlapping channels (1, 6, 11) and more interference from consumer devices. 5GHz has far more non-overlapping channels and higher throughput but shorter range. For a campus, I'd design for 5GHz-preferred with band steering, higher AP density in dense areas like lecture halls, and channel/power planning done through a proper site survey rather than defaults.
+
+**Standards to recognize:** 802.11n (Wi-Fi 4, 2.4/5GHz), 802.11ac (Wi-Fi 5, 5GHz only), 802.11ax (Wi-Fi 6/6E, adds OFDMA and better handling of dense client counts — relevant for lecture halls and dorms).
+
+**SSID-to-VLAN mapping ties back to the campus design answer in Section 4** — staff, faculty, student, and guest SSIDs each map to a separate VLAN so guest traffic never touches internal resources.
+
+---
+
+### Port security and 802.1X
+
+> Port security limits which/how many MAC addresses can use a port — useful for locking a port to a single known device, or capping how many devices can hang off one jack (e.g., a dorm room with a personal switch plugged in). 802.1X is a step further: it requires the connecting device to authenticate (via a RADIUS server, often tied into a directory like AD) before the port opens up onto the network at all — that's what a lot of campuses use for both wired and wireless access so unauthenticated devices never touch the internal VLANs.
+
+```
+switchport port-security
+switchport port-security maximum 2
+switchport port-security violation restrict
+```
+
+**If asked "how would you secure access-layer ports on campus":** Lead with the combination — port security for basic MAC limiting/rogue-device control, 802.1X where identity-based access control matters (student/faculty devices), and bpduguard/portfast for loop protection. Tie it back to the DMZ connector story (Story D) as the same instinct: control what's allowed onto the network by design, not by trust.
+
+---
+
+### HSRP / VRRP (gateway redundancy) — quick recall
+
+Already referenced in the campus design answer (Section 4) — make sure you can define it standalone if asked directly:
+
+> HSRP (Cisco-proprietary) and VRRP (open standard) both let two or more routers/switches share a virtual IP as the default gateway for a subnet. One is active, one is standby; if the active fails, standby takes over the virtual IP within seconds, so end devices never need to change their configured gateway. This is what makes distribution-layer redundancy actually work — without it, a switch failure means every device on that VLAN loses its gateway.
+
+---
+
 ## STAR stories (pre-prepared, adaptable)
 
 ### STAR 1: IP phone LLDP fix (VoIP, VLAN, layer 2 troubleshooting)
@@ -504,18 +634,20 @@ See Story E above. Use for: "tell me about a conflict with a coworker," "tell me
 
 ---
 
-## Study plan: July 14–23
+## Study plan: July 14–29 (updated after reschedule)
 
-**Interview:** Thursday July 23, 9:30am
+**Interview:** ~~Thursday July 23, 9:30am~~ → **Wednesday July 29, 10:00am**
 **Vacation:** Friday July 18 – Sunday morning July 20 (limited study only)
 **Approach:** Front-load the heavy technical work Tuesday–Thursday while you have full evenings. Use vacation time for light review only — doc on your phone, no Packet Tracer. Come back Monday with two solid days for a mock and tightening.
+
+**Reschedule note (added July 22):** The extra week is a genuine advantage — use it to go from "can answer the core questions" to "fluent under pressure," and to close out the supplemental fundamentals in Section 5 (subnetting, STP, DHCP/DNS, NAT, wireless, port security) that weren't in the original compressed plan. Don't just re-read the same material for a week — the schedule below adds new drilling, not repetition.
 
 ---
 
 ### Tuesday July 14 (tonight) — Full read-through
 
-- [ ] Read the entire document once, cover to cover
-- [ ] Goal: know what sections exist and roughly where your answers live — not memorization yet
+- [x] Read the entire document once, cover to cover
+- [x] Goal: know what sections exist and roughly where your answers live — not memorization yet
 
 ### Wednesday July 15 — Introduction and STAR stories
 
@@ -533,26 +665,57 @@ See Story E above. Use for: "tell me about a conflict with a coworker," "tell me
 
 - [x] Fri or Sat: reread the campus design and troubleshooting sections — no drilling, just absorb
 - [x] Sat or Sun morning: reread the DR section and appliance upgrade section
-- [ ] Sun morning: pick your 3 questions to ask — commit to them now so they're not a decision on Monday
+- [x] Sun morning: pick your 3 questions to ask — commit to them now so they're not a decision on Monday
 
-### Monday July 21 — Packet Tracer lab + concerns
+### Monday July 20 — Packet Tracer lab + concerns
 
-- [ ] Packet Tracer: build a small multi-layer topology (core → distribution → access), configure VLANs, trunks, SVIs, OSPF between L3 devices — validate with show commands
-- [ ] Work through the "potential concerns" section out loud: Cisco gap framing, third application framing
+- [x] Packet Tracer: build a small multi-layer topology (core → distribution → access), configure VLANs, trunks, SVIs, OSPF between L3 devices — validate with show commands
+- [x] Work through the "potential concerns" section out loud: Cisco gap framing, third application framing
 
-### Tuesday July 22 — Full mock interview (no notes)
+### Tuesday July 21 — Full mock interview #1 (no notes)
 
 - [ ] Run through the full interview start to finish as if it's real: intro, VCA stories, Cisco questions, fundamentals, concerns, your questions
 - [ ] Time yourself — should fit in 45–60 minutes
 - [ ] Note anything that felt vague or slow; spend 20 minutes drilling those spots afterward
 
-### Wednesday July 23 — Day before (light only)
+### Wednesday July 22 (today) — Confirm reschedule + supplemental fundamentals, part 1
+
+- [x] Reply to confirm the new July 29, 10:00am time in writing if you haven't already
+- [x] Update your calendar and any reminders for the new date/time
+- [ ] Section 5: drill subnetting/VLSM out loud — pick 3 different starting prefixes, subnet each 3 different ways until it's fast without pausing
+- [ ] Section 5: read through STP and DHCP, say the DORA process and portfast/bpduguard rationale out loud
+
+### Thursday July 23 — Supplemental fundamentals, part 2
+
+- [ ] Section 5: DNS, NAT, and the common ports table — quiz yourself on ports until you don't hesitate
+- [ ] Section 5: wireless fundamentals and port security/802.1X — practice the "how would you secure access-layer ports on campus" answer out loud
+- [ ] Packet Tracer (optional, if energy allows): add DHCP relay (`ip helper-address`) to the multi-layer topology from Monday and verify a client actually leases an address across VLANs
+
+### Friday July 24 — Consolidate + weak-spot drilling
+
+- [ ] Revisit anything that felt shaky in Monday's mock (per your notes) — drill those specific answers out loud 3x each
+- [ ] Re-run the OSPF neighbor troubleshooting checklist and the appliance upgrade walkthrough from memory, no notes
+- [ ] Light Packet Tracer: re-verify the trunk/VLAN/OSPF topology still works end to end
+
+### Saturday July 25 – Sunday July 26 — Weekend (light, phone-friendly)
+
+- [ ] Sat or Sun: reread Section 5 once, cover to cover — no drilling, just reinforce
+- [ ] Sat or Sun: reread the DR section, campus design section, and AI question — these are the most likely "fundamentals" deep-dives
+- [ ] Sun: re-confirm your 3 questions to ask — same ones as before unless something's changed
+
+### Monday July 27 — Full mock interview #2 (no notes)
+
+- [ ] Run the entire interview again start to finish, including 2-3 supplemental fundamentals questions pulled cold from Section 5 (have someone else ask, or write 3 on slips of paper beforehand and draw at random)
+- [ ] Time yourself again — compare to mock #1
+- [ ] This should feel noticeably smoother than Tuesday's mock; if it doesn't, that's your signal for what to drill Tuesday
+
+### Tuesday July 28 — Day before (light only)
 
 - [ ] Read through the document once — calm pass, no drilling
 - [ ] Confirm logistics: location or video link, parking if in-person
 - [ ] Early to bed
 
-### Thursday July 23 — Interview day (9:30am)
+### Wednesday July 29 — Interview day (10:00am)
 
 - [ ] Morning: reread only the intro answer and your top 2–3 STAR stories — nothing new
 - [ ] Arrive 10 minutes early / join the call 2 minutes before
@@ -597,5 +760,5 @@ Dylan Nguyen
 
 ---
 
-_Interview Preparation | Network Administrator, Whittier College | Third Application — Round 1 | July 2026_
+_Interview Preparation | Network Administrator, Whittier College | Third Application — Round 1 | Interview: Wednesday, July 29, 2026, 10:00am_
 _Career Helper Plugin | Prosper AI Consulting, UK_
