@@ -642,6 +642,8 @@ See Story E above. Use for: "tell me about a conflict with a coworker," "tell me
 
 **Reschedule note (added July 22):** The extra week is a genuine advantage — use it to go from "can answer the core questions" to "fluent under pressure," and to close out the supplemental fundamentals in Section 5 (subnetting, STP, DHCP/DNS, NAT, wireless, port security) that weren't in the original compressed plan. Don't just re-read the same material for a week — the schedule below adds new drilling, not repetition.
 
+**Pacing note (added July 22):** Today is a full break — no study. Prep picks back up tomorrow evening after work. Weekday sessions below are sized for an after-work evening; the weekend carries the heavier drilling. No mock interview has been run yet — both mocks now happen over the weekend (July 25 and 26), since that's the only stretch with full days available before the 29th.
+
 ---
 
 ### Tuesday July 14 (tonight) — Full read-through
@@ -672,44 +674,46 @@ See Story E above. Use for: "tell me about a conflict with a coworker," "tell me
 - [x] Packet Tracer: build a small multi-layer topology (core → distribution → access), configure VLANs, trunks, SVIs, OSPF between L3 devices — validate with show commands
 - [x] Work through the "potential concerns" section out loud: Cisco gap framing, third application framing
 
-### Tuesday July 21 — Full mock interview #1 (no notes)
+### Tuesday July 21 — Full mock interview (planned, didn't happen)
 
-- [ ] Run through the full interview start to finish as if it's real: intro, VCA stories, Cisco questions, fundamentals, concerns, your questions
-- [ ] Time yourself — should fit in 45–60 minutes
-- [ ] Note anything that felt vague or slow; spend 20 minutes drilling those spots afterward
+- [ ] Not completed — no mock interview has been run yet. First mock is now Saturday July 25 below.
 
-### Wednesday July 22 (today) — Confirm reschedule + supplemental fundamentals, part 1
+### Wednesday July 22 (today) — Break, no study
 
 - [x] Reply to confirm the new July 29, 10:00am time in writing if you haven't already
 - [x] Update your calendar and any reminders for the new date/time
+- [x] Nothing else today — take the day off from prep, let the reschedule settle. Resume tomorrow evening.
+
+### Thursday July 23 (evening, after work) — Supplemental fundamentals, part 1
+
 - [ ] Section 5: drill subnetting/VLSM out loud — pick 3 different starting prefixes, subnet each 3 different ways until it's fast without pausing
 - [ ] Section 5: read through STP and DHCP, say the DORA process and portfast/bpduguard rationale out loud
 
-### Thursday July 23 — Supplemental fundamentals, part 2
+### Friday July 24 (evening, after work) — Supplemental fundamentals, part 2
 
 - [ ] Section 5: DNS, NAT, and the common ports table — quiz yourself on ports until you don't hesitate
 - [ ] Section 5: wireless fundamentals and port security/802.1X — practice the "how would you secure access-layer ports on campus" answer out loud
-- [ ] Packet Tracer (optional, if energy allows): add DHCP relay (`ip helper-address`) to the multi-layer topology from Monday and verify a client actually leases an address across VLANs
 
-### Friday July 24 — Consolidate + weak-spot drilling
+### Saturday July 25 — Full mock interview #1 (first one, no notes) + Packet Tracer
 
-- [ ] Revisit anything that felt shaky in Monday's mock (per your notes) — drill those specific answers out loud 3x each
-- [ ] Re-run the OSPF neighbor troubleshooting checklist and the appliance upgrade walkthrough from memory, no notes
-- [ ] Light Packet Tracer: re-verify the trunk/VLAN/OSPF topology still works end to end
+- [ ] Run through the full interview start to finish as if it's real: intro, VCA stories, Cisco questions, fundamentals, concerns, your questions — this is the first time running it end to end, so expect rough spots
+- [ ] Time yourself — should fit in 45–60 minutes
+- [ ] Note anything that felt vague, slow, or unpracticed — this list drives the rest of the weekend
+- [ ] Packet Tracer: add DHCP relay (`ip helper-address`) to the multi-layer topology and re-verify the trunk/VLAN/OSPF topology still works end to end
 
-### Saturday July 25 – Sunday July 26 — Weekend (light, phone-friendly)
+### Sunday July 26 — Drill weak spots + full mock interview #2 (no notes)
 
-- [ ] Sat or Sun: reread Section 5 once, cover to cover — no drilling, just reinforce
-- [ ] Sat or Sun: reread the DR section, campus design section, and AI question — these are the most likely "fundamentals" deep-dives
-- [ ] Sun: re-confirm your 3 questions to ask — same ones as before unless something's changed
+- [ ] Morning: drill everything flagged from Saturday's mock — out loud, repeat until smooth, including any Section 5 fundamentals questions that tripped you up
+- [ ] Afternoon: run the full mock again start to finish, including 2-3 supplemental fundamentals questions pulled cold from Section 5 (have someone else ask, or write 3 on slips of paper beforehand and draw at random)
+- [ ] Time yourself again — compare to Saturday's run; this one should be noticeably smoother
+- [ ] Re-confirm your 3 questions to ask — same ones as before unless something's changed
 
-### Monday July 27 — Full mock interview #2 (no notes)
+### Monday July 27 (evening, after work) — Consolidate
 
-- [ ] Run the entire interview again start to finish, including 2-3 supplemental fundamentals questions pulled cold from Section 5 (have someone else ask, or write 3 on slips of paper beforehand and draw at random)
-- [ ] Time yourself again — compare to mock #1
-- [ ] This should feel noticeably smoother than Tuesday's mock; if it doesn't, that's your signal for what to drill Tuesday
+- [ ] Drill whatever still felt shaky in Sunday's second mock — out loud, no notes, until it's smooth
+- [ ] Quick pass on Section 5 topics that still feel slow to recall
 
-### Tuesday July 28 — Day before (light only)
+### Tuesday July 28 (evening, after work) — Day before (light only)
 
 - [ ] Read through the document once — calm pass, no drilling
 - [ ] Confirm logistics: location or video link, parking if in-person
