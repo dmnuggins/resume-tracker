@@ -236,9 +236,15 @@ OSPF neighbors form when two routers exchange Hello packets and agree on: same a
 
 > A dedicated core layer earns its complexity when a single distribution pair can't cleanly aggregate everything — lots of buildings, high inter-building traffic, or distinct blocks that need fault isolation from each other, like separate colleges or a hospital wing. In a classic 3-tier design the core is kept deliberately dumb and fast — no ACLs, no routing policy, just switching between distribution blocks — while distribution handles inter-VLAN routing and policy enforcement.
 >
-> For a campus this size, I'd default to collapsed core: one redundant pair doing both jobs, aggregating every building's access layer directly. It cuts a hop, cuts switch count, and cuts the OSPF/HSRP complexity you'd otherwise be managing — without losing redundancy, since the collapsed pair is still deployed in HA (High Availability) with HSRP.
+> I actually looked at Whittier's campus map before this interview. It's roughly 30 buildings on one contiguous, walkable quad — academic and residential halls clustered tightly together, with the athletics complex — Graham Athletic Center, Slade Aquatic Center, the stadium and fields — just east of the main quad but still on the same footprint, not a separate site. That's one campus block, not a multi-site network. A single redundant distribution/core pair, feeding fiber out to each building's access switch, comfortably aggregates that without a dedicated core layer earning its keep.
 >
-> The trigger to flip to 3-tier isn't "it's a college," it's scale — enough buildings or distribution blocks that a single pair is visibly saturated aggregating them, or enough inter-building traffic that separating core switching from policy enforcement actually matters. If Whittier's footprint is bigger than I'm assuming, that's exactly the kind of thing I'd want to know in the first 30 days, and I'd size the design to what's actually there rather than defaulting to the more complex model because it sounds more enterprise.
+> If I were thinking about redundancy specifically, I'd treat it as two natural zones — the main academic/residential quad and the athletics cluster — and make sure the fiber paths to each don't share a single point of failure. That's a cabling and resiliency decision, though, not a reason to add a third switching tier.
+>
+> One detail worth flagging: Broadoaks School, the K-8 lab school on campus, is functionally a different institution sharing the property. If it's on the same network, that's a strong candidate for its own VLAN and tighter ACLs regardless of tier — a K-8 environment has different compliance expectations than a college network, and I'd want that segmented on day one.
+>
+> So the trigger to flip to 3-tier isn't "it's a college," it's scale — enough buildings or distinct blocks that a single distribution pair is visibly saturated, or enough inter-building traffic that separating core switching from policy enforcement actually earns its keep. Based on the map, Whittier doesn't hit that bar — but I'd still confirm actual switch counts and traffic patterns in the first 30 days before treating that as settled.
+
+**Why this answer works:** It shows you did homework beyond the CV/job posting — pulling the actual campus map is the kind of proactive research most candidates skip. Say "I looked at the campus map before this interview" plainly; don't undersell it as a small thing.
 
 ---
 
