@@ -224,13 +224,21 @@ OSPF neighbors form when two routers exchange Hello packets and agree on: same a
 
 > I'd start with requirements before touching hardware. How many users, how many buildings, what services need network access — VoIP, wireless, IoT, guest access? That drives the VLAN design and IP addressing, which I'd document before any device gets configured.
 >
-> For a college campus like this, I'd use a two-tier design — a redundant distribution/core layer and access switches in each building. Access switches handle end devices: PoE for phones and APs, VLAN assignment per port, portfast and bpduguard on access ports. Distribution handles inter-VLAN routing via SVIs, HSRP for gateway redundancy so a single switch failure doesn't take down a VLAN, and OSPF if there's any routing complexity between buildings.
+> For a college campus like this, I'd use a collapsed-core (two-tier) design — a redundant distribution/core layer and access switches in each building. Access switches handle end devices: PoE for phones and APs, VLAN assignment per port, portfast and bpduguard on access ports. Distribution handles inter-VLAN routing via SVIs, HSRP for gateway redundancy so a single switch failure doesn't take down a VLAN, and OSPF if there's any routing complexity between buildings.
 >
 > Wireless would be trunked to the distribution layer, with SSIDs mapped to VLANs — staff, faculty, student, and guest all separate. VoIP needs its own VLAN with QoS — DSCP EF marking for voice traffic, LLQ to give it priority queuing, and the switch ports configured with a voice VLAN alongside the data VLAN.
 >
 > Before I touched a live network I'd document the IP addressing scheme, VLAN table, and physical topology. And I'd set up config backup automation — Oxidized pulling configs to a Git repo on a schedule — before anything goes into production.
 
 **Follow-up they'll likely ask:** "What would you prioritize if the budget was limited?" Answer: distribution redundancy first (a single distribution switch failure takes everything down), then config backup automation, then access layer improvements.
+
+**Follow-up they'll likely ask: "Why collapsed core instead of a full 3-tier (core/distribution/access) design? Wouldn't 3-tier make sense for a campus this size?"**
+
+> A dedicated core layer earns its complexity when a single distribution pair can't cleanly aggregate everything — lots of buildings, high inter-building traffic, or distinct blocks that need fault isolation from each other, like separate colleges or a hospital wing. In a classic 3-tier design the core is kept deliberately dumb and fast — no ACLs, no routing policy, just switching between distribution blocks — while distribution handles inter-VLAN routing and policy enforcement.
+>
+> For a campus this size, I'd default to collapsed core: one redundant pair doing both jobs, aggregating every building's access layer directly. It cuts a hop, cuts switch count, and cuts the OSPF/HSRP complexity you'd otherwise be managing — without losing redundancy, since the collapsed pair is still deployed in HA (High Availability) with HSRP.
+>
+> The trigger to flip to 3-tier isn't "it's a college," it's scale — enough buildings or distribution blocks that a single pair is visibly saturated aggregating them, or enough inter-building traffic that separating core switching from policy enforcement actually matters. If Whittier's footprint is bigger than I'm assuming, that's exactly the kind of thing I'd want to know in the first 30 days, and I'd size the design to what's actually there rather than defaulting to the more complex model because it sounds more enterprise.
 
 ---
 
@@ -442,7 +450,7 @@ spanning-tree bpduguard enable  # shut the port if it receives a BPDU (rogue swi
 
 ### DHCP
 
-> DHCP uses a 4-step process: DORA — Discover (client broadcasts), Offer (server responds with an IP), Request (client requests that specific IP), Acknowledge (server confirms the lease). For a multi-VLAN environment, each VLAN's SVI needs either a local DHCP scope or an `ip helper-address` pointing at a central DHCP server, since DHCP broadcasts don't cross VLAN boundaries on their own.
+> DHCP uses a 4-step process: DORA — Discover (client broadcasts), Offer (server responds with an IP), Request (client requests that specific IP), Acknowledge (server confirms the lease). For a multi-VLAN environment, each VLAN's SVI needs either a local DHCP scope or an `ip helper-address` pointing at a central DHCP server (on the layer 3 device), since DHCP broadcasts don't cross VLAN boundaries on their own.
 
 **If asked to troubleshoot "client isn't getting an IP":**
 
@@ -676,7 +684,7 @@ See Story E above. Use for: "tell me about a conflict with a coworker," "tell me
 
 ### Tuesday July 21 — Full mock interview (planned, didn't happen)
 
-- [ ] Not completed — no mock interview has been run yet. First mock is now Saturday July 25 below.
+- [x] Not completed — no mock interview has been run yet. First mock is now Saturday July 25 below.
 
 ### Wednesday July 22 (today) — Break, no study
 
@@ -686,8 +694,8 @@ See Story E above. Use for: "tell me about a conflict with a coworker," "tell me
 
 ### Thursday July 23 (evening, after work) — Supplemental fundamentals, part 1
 
-- [ ] Section 5: drill subnetting/VLSM out loud — pick 3 different starting prefixes, subnet each 3 different ways until it's fast without pausing
-- [ ] Section 5: read through STP and DHCP, say the DORA process and portfast/bpduguard rationale out loud
+- [x] Section 5: drill subnetting/VLSM out loud — pick 3 different starting prefixes, subnet each 3 different ways until it's fast without pausing
+- [x] Section 5: read through STP and DHCP, say the DORA process and portfast/bpduguard rationale out loud
 
 ### Friday July 24 (evening, after work) — Supplemental fundamentals, part 2
 
