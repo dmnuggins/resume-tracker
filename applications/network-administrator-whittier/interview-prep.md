@@ -535,6 +535,96 @@ Already referenced in the campus design answer (Section 4) — make sure you can
 
 ---
 
+## Section 6: Job-description-specific gaps (added after reviewing the full JD)
+
+The JD names several things not covered anywhere above — some because your VCA experience genuinely doesn't touch them (GRE/IPsec/DMVPN, multicast, cable plant), some because they're a level more specific than what's in Section 5 (RADIUS vs. TACACS+, NAC/SDP). Read-only material — none of this needs to be spoken out loud, so it fits the silent Friday/Saturday block.
+
+---
+
+### IPv6 (explicitly named alongside IPv4 in the JD — biggest gap)
+
+> IPv6 addresses are 128 bits, written as 8 groups of hex separated by colons, with consecutive zero groups collapsible to `::` once per address. `/64` is the standard prefix for a LAN segment — it's not sized to host count the way IPv4 subnetting is; you're not conserving address space, you're aligning to the addressing model. A device gets an address either via SLAAC (the router advertises the prefix, the host builds its own address from it) or DHCPv6 (stateful, like IPv4 DHCP, for when you need to track/control specific assignments). Neighbor Discovery (ND) replaces ARP for L2 resolution and router discovery. Link-local addresses (`fe80::/10`) are auto-assigned on every interface and used for on-link protocol traffic like ND and routing protocol adjacencies, regardless of global addressing.
+
+**Practical differences from IPv4 worth stating out loud if asked:** No NAT is needed in the traditional sense (address space isn't scarce), though NAT66/NPTv6 exists for specific cases. Every interface can hold multiple IPv6 addresses simultaneously (link-local + global). Subnetting math is about hex/nibble boundaries, not decimal — e.g., splitting a `/48` into `/64`s per VLAN is just varying the 4th hex group.
+
+**If asked "have you deployed IPv6 in production":** Honest answer — no, VCA's environment is IPv4-only. Frame it like the Cisco gap: understood at the design level, would validate thoroughly in a lab before a production rollout, same discipline as anything unfamiliar.
+
+---
+
+### GRE, IPsec, DMVPN (named explicitly — no VCA war story to lean on)
+
+> GRE (Generic Routing Encapsulation) wraps arbitrary traffic — including routing protocols — in an IP packet to tunnel it point-to-point between two devices. It's not encrypted on its own. IPsec is the encryption/authentication framework — AH provides integrity, ESP provides integrity plus encryption (ESP is what's actually used almost always). It negotiates in two phases: IKE Phase 1 builds a secure management tunnel between the peers, Phase 2 negotiates the actual IPsec security associations that protect data traffic. GRE and IPsec are often paired — GRE carries dynamic routing protocols and multicast that plain IPsec can't, IPsec encrypts the GRE tunnel.
+>
+> DMVPN (Dynamic Multipoint VPN) is Cisco's answer to needing a full-mesh or partial-mesh VPN without manually configuring a tunnel for every site pair. It combines multipoint GRE (one tunnel interface, many peers) with NHRP (Next Hop Resolution Protocol, so spokes can discover each other's real addresses dynamically) and IPsec for encryption. A hub-and-spoke design can dynamically build direct spoke-to-spoke tunnels on demand instead of routing everything through the hub.
+
+**Real example to tie in:** VCA's dual-ISP failover runs through Fortinet SD-WAN and VeloCloud rather than DMVPN — mention that as the modern equivalent you actually have hands-on experience with, then pivot to the concepts above for anything Cisco-specific.
+
+---
+
+### Multicast
+
+> Multicast lets a single stream reach many receivers without duplicating traffic per-recipient. IGMP (Internet Group Management Protocol) is how hosts tell their local router they want to join a multicast group — IGMPv2 is simple join/leave, IGMPv3 adds source filtering (join a group but only from a specific source). PIM (Protocol Independent Multicast) is how routers build the actual distribution tree between each other — PIM sparse mode only sends traffic where there's an explicit request (the common choice), PIM dense mode floods everywhere and prunes back (rarely used at scale).
+
+**Campus use case to mention:** AV-over-IP for lecture halls, digital signage, IPTV, or an IP-based paging/emergency notification system — any of these would be the reason a campus network runs multicast at all.
+
+---
+
+### NAC and SDP (security-strategy bullet names these separately from firewall/wireless security)
+
+> NAC (Network Access Control) is the broader category that 802.1X sits under — a system like Cisco ISE or Aruba ClearPass that decides whether a device gets on the network at all, and what it can reach once it's on, based on identity, device posture, or both. It's the difference between "this port is 802.1X-enabled" and "we have a policy engine deciding VLAN assignment and access per user/device across the whole campus."
+>
+> SDP (Software-Defined Perimeter), often talked about as ZTNA (Zero Trust Network Access), is the modern alternative to a traditional VPN. Instead of a VPN dropping a remote user onto the internal network as if they were local, SDP brokers access per-application — the user authenticates to a controller, and only the specific resource they're authorized for becomes reachable, nothing else. It reduces blast radius if a remote device is compromised, since there's no broad network-level access to abuse.
+
+**If asked "how would you secure remote access to campus systems":** Lead with layered identity — NAC/802.1X for on-campus access control, and SDP/ZTNA as the direction remote access is moving away from flat VPN access, even if the current environment (VCA's VeloCloud/site-to-site model) is still traditional VPN-based.
+
+---
+
+### RADIUS vs. TACACS+ (JD names both — most candidates only know RADIUS)
+
+> Both are AAA protocols, but for different purposes. RADIUS combines authentication and authorization into one response and encrypts only the password field — it's built for _network access_ AAA: wireless clients, VPN users, 802.1X port authentication. TACACS+ separates authentication, authorization, and accounting into distinct steps, encrypts the entire packet body, and is Cisco's protocol of choice for _device administration_ AAA — controlling and logging who can log into a router or switch and run what commands.
+>
+> For campus infrastructure specifically, TACACS+ is usually the answer to "how do you control admin access to network devices" — it lets you tie individual admin logins to a directory, enforce command-level authorization (e.g., a junior admin can `show` but not `configure terminal`), and get per-command accounting logs. RADIUS stays focused on end-user and device network access.
+
+---
+
+### Campus cable plant (the JD's first listed essential function — currently your weakest area)
+
+> The cable plant is the physical layer everything else depends on — intra-building horizontal cabling from the wiring closet to each jack, and inter-building backbone cabling connecting IDFs (intermediate distribution frames) back to the MDF (main distribution frame). Horizontal runs are almost always copper — Cat6 or Cat6A for anything needing multi-gig or longer PoE budget headroom, following TIA/EIA-568 standards for termination and the 90-meter permanent-link distance limit. Backbone runs between buildings are fiber — multimode for shorter runs within a campus footprint, singlemode if a run is long enough or future bandwidth needs justify the extra cost, since singlemode has effectively unlimited practical range for campus distances and no modal dispersion limit.
+>
+> Good cable plant management means every run is labeled and documented at both ends, patch panels are mapped to a system of record (not tribal knowledge), and new runs get certified with a cable tester (verifying wire map, length, attenuation, crosstalk) before they're trusted for production traffic — not just plugged in and assumed good.
+
+**Honest framing if asked about hands-on cabling experience:** Lean on whatever's true — even basic patch cable termination, punch-down work, or running/labeling cable at VCA counts as relevant experience. If it's genuinely limited, be direct about it the same way as the Cisco gap: understand the standards and the "why," would follow established documentation/labeling conventions on day one, and treat certification testing as non-negotiable before trusting a new run.
+
+**Your actual answer:**
+
+> I do have hands-on experience here — patch cable termination, punch-down work, and running and labeling cable, both in my home network and at the VCA corporate office. I use network cable testers to verify RJ45 terminations are good end to end before trusting a run, which is the same discipline the JD's asking about, just not at campus backbone scale yet.
+
+---
+
+### Quick talking points (not deep-dive topics — just don't be caught flat-footed)
+
+**"Have you trained or supervised anyone?"** — The JD lists training/supervising student employees as an essential function; none of your prepared STAR stories cover this directly. Have a real moment ready — even something informal at VCA (walking a newer hire through a process, delegating a task and reviewing the result) is enough. Frame it as: set clear expectations, check in at the right cadence (not micromanaging, not disappearing), give specific feedback.
+
+**Your actual answer:**
+
+> I've supervised a part-time IT assistant at VCA — walked him through a new documentation system I set up alongside our Git-based change tracking, then tasked him with handling help desk requests directly. I check in with him and with the end user afterward to validate the work got done right, rather than just assuming it did.
+
+**"Tell me about a time you had to put together a cost analysis or proposal."** — JD mentions "detailed proposals, cost analyses." If nothing formal comes to mind, it's fine to be honest that most of your VCA work is operational rather than budget-owning, but describe any vendor comparison, hardware sizing decision, or informal cost/benefit reasoning you've done (e.g., justifying the UAG resource increase, or hardware choices behind the BitLocker rollout).
+
+**Your actual answer:**
+
+> Most of my work at VCA is operational rather than budget-owning, but I have done comparative analysis — I put together a risk analysis comparing GitHub Teams versus GitLab for our source control decision, weighing cost, security posture, and migration effort before recommending a direction.
+
+**"How comfortable are you with Linux or Mac administration?"** — JD lists Linux/Windows/Macintosh. Your VCA narrative is Windows/VMware-heavy — one honest line closes this: comfortable with Linux CLI since most network tooling (Oxidized, NMS platforms, syslog servers) runs on it, and you're not afraid of a terminal on any OS. Don't oversell platform depth you don't have.
+
+**Your actual answer:**
+
+> I've worked across all three. Linux for our Git server instances at work and in my own security homelabs — comfortable on the CLI. Mac for personal use and software development. Windows is my primary day-to-day at VCA, for both end-user and server administration.
+
+**"Are you available for off-hours work or a flexible schedule?"** — Explicitly called out in the JD ("occasional availability for off-hour support issues, weekend projects... may require flexible schedule"). Just affirm it directly and honestly — this isn't a place to hedge.
+
+---
+
 ## STAR stories (pre-prepared, adaptable)
 
 ### STAR 1: IP phone LLDP fix (VoIP, VLAN, layer 2 troubleshooting)
@@ -711,20 +801,23 @@ See Story E above. Use for: "tell me about a conflict with a coworker," "tell me
 - [ ] Section 5: wireless fundamentals and port security/802.1X — read through; write out the "how would you secure access-layer ports on campus" answer by hand instead of saying it
 - [ ] Re-do wireless lab from Flackbox (hands-on, doesn't need your voice)
 
-### Saturday July 25 — Written prep + Packet Tracer (silent — voice still out)
+### Saturday July 25 — Written prep + Packet Tracer + Section 6 reading (silent — voice still out)
 
 - [ ] Packet Tracer: add DHCP relay (`ip helper-address`) to the multi-layer topology and re-verify the trunk/VLAN/OSPF topology still works end to end
 - [ ] Write out full answers (by hand or typed) to the intro, "why applying again," and 2–3 STAR stories — this substitutes for out-loud practice while your voice is out
 - [ ] Read through the "potential concerns" section and rehearse responses mentally
+- [ ] Section 6: read IPv6 and GRE/IPsec/DMVPN — the two biggest JD-named gaps; take written notes rather than trying to memorize
+- [ ] Section 6: read Multicast and Cable plant — cable plant especially, since it's the JD's first listed essential function and currently has zero coverage elsewhere in this doc
 
-### Sunday July 26 — Full mock interview #1 AND #2 (voice back)
+### Sunday July 26 — Section 6 wrap-up, then full mock interview #1 AND #2 (voice back)
 
 Both mocks land today since Friday/Saturday couldn't carry any speaking practice. Budget the whole day for this.
 
+- [ ] Early morning (15–20 min, before mocks start): finish Section 6 — NAC/SDP, RADIUS vs. TACACS+, and the four quick talking points (training/supervising, cost analysis, Linux/Mac comfort, off-hours availability). Skim only, no drilling — you want these available to reach for, not memorized verbatim.
 - [ ] Morning: full mock interview #1 start to finish — intro, VCA stories, Cisco questions, fundamentals, concerns, your questions. First time out loud, so expect rough spots.
 - [ ] Time it — should fit in 45–60 minutes. Note anything vague, slow, or unpracticed.
-- [ ] Midday: drill everything flagged from mock #1 — out loud, repeat until smooth, including any Section 5 fundamentals questions that tripped you up (the written answers from Friday/Saturday should make this faster than starting cold)
-- [ ] Afternoon/evening: full mock interview #2, including 2–3 supplemental fundamentals questions pulled cold from Section 5 (have someone else ask, or draw from slips of paper)
+- [ ] Midday: drill everything flagged from mock #1 — out loud, repeat until smooth, including any Section 5/6 fundamentals questions that tripped you up (the written answers and Saturday's reading should make this faster than starting cold)
+- [ ] Afternoon/evening: full mock interview #2, including 2–3 supplemental fundamentals questions pulled cold from Section 5 or 6 (have someone else ask, or draw from slips of paper)
 - [ ] Time it again — compare to mock #1; this one should be noticeably smoother
 - [ ] Re-confirm your 3 questions to ask
 
