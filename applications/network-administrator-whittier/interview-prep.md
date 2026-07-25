@@ -658,6 +658,8 @@ See Story E above. Use for: "tell me about a conflict with a coworker," "tell me
 
 **Pacing note (added July 22):** Today is a full break — no study. Prep picks back up tomorrow evening after work. Weekday sessions below are sized for an after-work evening; the weekend carries the heavier drilling. No mock interview has been run yet — both mocks now happen over the weekend (July 25 and 26), since that's the only stretch with full days available before the 29th.
 
+**Voice note (added July 24):** Lost my voice from being sick — not reliably speaking until probably Sunday. Anything requiring speaking out loud (practicing answers, mock interviews) is pushed to Sunday–Monday. Friday and Saturday convert to silent/written prep: reading, Packet Tracer (typing, not speaking), and writing out full answers by hand instead of saying them. Both mock interviews now land on Sunday July 26 instead of being split across Saturday/Sunday, which compresses the buffer before the 29th to one day (Monday) — make Monday count.
+
 ---
 
 ### Tuesday July 14 (tonight) — Full read-through
@@ -703,30 +705,36 @@ See Story E above. Use for: "tell me about a conflict with a coworker," "tell me
 - [x] Section 5: drill subnetting/VLSM out loud — pick 3 different starting prefixes, subnet each 3 different ways until it's fast without pausing
 - [x] Section 5: read through STP and DHCP, say the DORA process and portfast/bpduguard rationale out loud
 
-### Friday July 24 (evening, after work) — Supplemental fundamentals, part 2
+### Friday July 24 (evening, after work) — Supplemental fundamentals, part 2 (silent — voice out)
 
-- [ ] Section 5: DNS, NAT, and the common ports table — quiz yourself on ports until you don't hesitate
-- [ ] Section 5: wireless fundamentals and port security/802.1X — practice the "how would you secure access-layer ports on campus" answer out loud
-- [ ] Re-do wireless lab from Flackbox
+- [ ] Section 5: DNS, NAT, and the common ports table — quiz yourself silently or on paper, not out loud
+- [ ] Section 5: wireless fundamentals and port security/802.1X — read through; write out the "how would you secure access-layer ports on campus" answer by hand instead of saying it
+- [ ] Re-do wireless lab from Flackbox (hands-on, doesn't need your voice)
 
-### Saturday July 25 — Full mock interview #1 (first one, no notes) + Packet Tracer
+### Saturday July 25 — Written prep + Packet Tracer (silent — voice still out)
 
-- [ ] Run through the full interview start to finish as if it's real: intro, VCA stories, Cisco questions, fundamentals, concerns, your questions — this is the first time running it end to end, so expect rough spots
-- [ ] Time yourself — should fit in 45–60 minutes
-- [ ] Note anything that felt vague, slow, or unpracticed — this list drives the rest of the weekend
 - [ ] Packet Tracer: add DHCP relay (`ip helper-address`) to the multi-layer topology and re-verify the trunk/VLAN/OSPF topology still works end to end
+- [ ] Write out full answers (by hand or typed) to the intro, "why applying again," and 2–3 STAR stories — this substitutes for out-loud practice while your voice is out
+- [ ] Read through the "potential concerns" section and rehearse responses mentally
 
-### Sunday July 26 — Drill weak spots + full mock interview #2 (no notes)
+### Sunday July 26 — Full mock interview #1 AND #2 (voice back)
 
-- [ ] Morning: drill everything flagged from Saturday's mock — out loud, repeat until smooth, including any Section 5 fundamentals questions that tripped you up
-- [ ] Afternoon: run the full mock again start to finish, including 2-3 supplemental fundamentals questions pulled cold from Section 5 (have someone else ask, or write 3 on slips of paper beforehand and draw at random)
-- [ ] Time yourself again — compare to Saturday's run; this one should be noticeably smoother
-- [ ] Re-confirm your 3 questions to ask — same ones as before unless something's changed
+Both mocks land today since Friday/Saturday couldn't carry any speaking practice. Budget the whole day for this.
+
+- [ ] Morning: full mock interview #1 start to finish — intro, VCA stories, Cisco questions, fundamentals, concerns, your questions. First time out loud, so expect rough spots.
+- [ ] Time it — should fit in 45–60 minutes. Note anything vague, slow, or unpracticed.
+- [ ] Midday: drill everything flagged from mock #1 — out loud, repeat until smooth, including any Section 5 fundamentals questions that tripped you up (the written answers from Friday/Saturday should make this faster than starting cold)
+- [ ] Afternoon/evening: full mock interview #2, including 2–3 supplemental fundamentals questions pulled cold from Section 5 (have someone else ask, or draw from slips of paper)
+- [ ] Time it again — compare to mock #1; this one should be noticeably smoother
+- [ ] Re-confirm your 3 questions to ask
 
 ### Monday July 27 (evening, after work) — Consolidate
 
+Only day of buffer left before the 29th — prioritize whatever felt shakiest in Sunday's mocks.
+
 - [ ] Drill whatever still felt shaky in Sunday's second mock — out loud, no notes, until it's smooth
 - [ ] Quick pass on Section 5 topics that still feel slow to recall
+- [ ] If voice/energy allows, one more partial run-through of just the intro + weakest STAR story
 
 ### Tuesday July 28 (evening, after work) — Day before (light only)
 
