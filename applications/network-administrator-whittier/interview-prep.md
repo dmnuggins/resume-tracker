@@ -527,7 +527,7 @@ switchport port-security violation restrict
 
 ---
 
-### HSRP / VRRP (gateway redundancy) — quick recall
+### HSRP (Hot Standby Redundancy Protocol) / VRRP (Virtual Router Redundancy Protocol) (gateway redundancy) — quick recall
 
 Already referenced in the campus design answer (Section 4) — make sure you can define it standalone if asked directly:
 
@@ -707,6 +707,7 @@ See Story E above. Use for: "tell me about a conflict with a coworker," "tell me
 
 - [ ] Section 5: DNS, NAT, and the common ports table — quiz yourself on ports until you don't hesitate
 - [ ] Section 5: wireless fundamentals and port security/802.1X — practice the "how would you secure access-layer ports on campus" answer out loud
+- [ ] Re-do wireless lab from Flackbox
 
 ### Saturday July 25 — Full mock interview #1 (first one, no notes) + Packet Tracer
 
