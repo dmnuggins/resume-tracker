@@ -527,7 +527,7 @@ switchport port-security violation restrict
 
 ---
 
-### HSRP (Hot Standby Redundancy Protocol) / VRRP (Virtual Router Redundancy Protocol) (gateway redundancy) — quick recall
+### HSRP (Hot Standby Router Protocol) / VRRP (Virtual Router Redundancy Protocol) (gateway redundancy) — quick recall
 
 Already referenced in the campus design answer (Section 4) — make sure you can define it standalone if asked directly:
 
