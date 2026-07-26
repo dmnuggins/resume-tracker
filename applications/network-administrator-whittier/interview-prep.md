@@ -597,7 +597,7 @@ The JD names several things not covered anywhere above — some because your VCA
 
 **Your actual answer:**
 
-> I do have hands-on experience here — patch cable termination, punch-down work, and running and labeling cable, both in my home network and at the VCA corporate office. I use network cable testers to verify RJ45 terminations are good end to end before trusting a run, which is the same discipline the JD's asking about, just not at campus backbone scale yet.
+> I do have hands-on experience here — patch cable termination, punch-down work, and running and labeling cable, both in my home network and at the VCA corporate office. I use network cable testers to verify RJ45 terminations are good end to end before trusting a run, which is the same discipline the JD's asking about, just not at campus backbone scale yet. DAC cable connections (configuration of the SFP modules).
 
 ---
 
@@ -797,25 +797,26 @@ See Story E above. Use for: "tell me about a conflict with a coworker," "tell me
 
 ### Friday July 24 (evening, after work) — Supplemental fundamentals, part 2 (silent — voice out)
 
-- [ ] Section 5: DNS, NAT, and the common ports table — quiz yourself silently or on paper, not out loud
-- [ ] Section 5: wireless fundamentals and port security/802.1X — read through; write out the "how would you secure access-layer ports on campus" answer by hand instead of saying it
+- [x] Section 5: DNS, NAT, and the common ports table — quiz yourself silently or on paper, not out loud
+- [x] Section 5: wireless fundamentals and port security/802.1X — read through; write out the "how would you secure access-layer ports on campus" answer by hand instead of saying it
 - [ ] Re-do wireless lab from Flackbox (hands-on, doesn't need your voice)
 
 ### Saturday July 25 — Written prep + Packet Tracer + Section 6 reading (silent — voice still out)
 
 - [ ] Packet Tracer: add DHCP relay (`ip helper-address`) to the multi-layer topology and re-verify the trunk/VLAN/OSPF topology still works end to end
-- [ ] Write out full answers (by hand or typed) to the intro, "why applying again," and 2–3 STAR stories — this substitutes for out-loud practice while your voice is out
-- [ ] Read through the "potential concerns" section and rehearse responses mentally
-- [ ] Section 6: read IPv6 and GRE/IPsec/DMVPN — the two biggest JD-named gaps; take written notes rather than trying to memorize
-- [ ] Section 6: read Multicast and Cable plant — cable plant especially, since it's the JD's first listed essential function and currently has zero coverage elsewhere in this doc
+- [x] Write out full answers (by hand or typed) to the intro, "why applying again," and 2–3 STAR stories — this substitutes for out-loud practice while your voice is out
+- [x] Read through the "potential concerns" section and rehearse responses mentally
+- [x] Section 6: read IPv6 and GRE/IPsec/DMVPN — the two biggest JD-named gaps; take written notes rather than trying to memorize
+- [x] Section 6: read Multicast and Cable plant — cable plant especially, since it's the JD's first listed essential function and currently has zero coverage elsewhere in this doc
 
 ### Sunday July 26 — Section 6 wrap-up, then full mock interview #1 AND #2 (voice back)
 
 Both mocks land today since Friday/Saturday couldn't carry any speaking practice. Budget the whole day for this.
 
 - [ ] Early morning (15–20 min, before mocks start): finish Section 6 — NAC/SDP, RADIUS vs. TACACS+, and the four quick talking points (training/supervising, cost analysis, Linux/Mac comfort, off-hours availability). Skim only, no drilling — you want these available to reach for, not memorized verbatim.
-- [ ] Morning: full mock interview #1 start to finish — intro, VCA stories, Cisco questions, fundamentals, concerns, your questions. First time out loud, so expect rough spots.
-- [ ] Time it — should fit in 45–60 minutes. Note anything vague, slow, or unpracticed.
+- [x] Morning: full mock interview #1 start to finish — intro, VCA stories, Cisco questions, fundamentals, concerns, your questions. First time out loud, so expect rough spots.
+- [x] Time it — should fit in 45–60 minutes. Note anything vague, slow, or unpracticed.
+  - [x] Need to review some sections, but timing is about an hour.
 - [ ] Midday: drill everything flagged from mock #1 — out loud, repeat until smooth, including any Section 5/6 fundamentals questions that tripped you up (the written answers and Saturday's reading should make this faster than starting cold)
 - [ ] Afternoon/evening: full mock interview #2, including 2–3 supplemental fundamentals questions pulled cold from Section 5 or 6 (have someone else ask, or draw from slips of paper)
 - [ ] Time it again — compare to mock #1; this one should be noticeably smoother

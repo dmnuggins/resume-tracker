@@ -41,8 +41,8 @@ Companion drill doc to `interview-prep.md`. Two passes: **Part 1** is questions 
 22. Follow-up: What if the device doesn't come back up after the reload?
 23. Follow-up: Have you done this on a live production device?
 24. How do you think about disaster recovery for network infrastructure? What's your DR plan for the campus network?
-25. Follow-up: Have you ever dealt with a major outage?
-26. Follow-up: What do you do if you can't reach the device remotely?
+25. Follow-up: Have you ever dealt with a major outage? Fortinet Denver, VDI lost from SAN failure
+26. Follow-up: What do you do if you can't reach the device remotely? Off band
 27. Follow-up: What's your backup strategy for network configs?
 28. What are your thoughts on AI? How do you use AI in your work?
 29. Follow-up: Would you use AI to help write network configs?
@@ -52,7 +52,7 @@ Companion drill doc to `interview-prep.md`. Two passes: **Part 1** is questions 
 ### Supplemental technical fundamentals
 
 32. Walk me through subnetting a /24 into 4 equal subnets.
-33. Explain Spanning Tree Protocol — why does it exist, and what are the port roles?
+33. Explain Spanning Tree Protocol — why does it exist, and what are the port roles?\*
 34. Walk me through the DHCP process. How would you troubleshoot a client not getting an IP?
 35. How does DNS resolution work? How would you troubleshoot "the site won't load"?
 36. Explain the types of NAT.
@@ -108,7 +108,7 @@ Companion drill doc to `interview-prep.md`. Two passes: **Part 1** is questions 
 
 ### What you've been up to (behavioral / STAR)
 
-**3. What have you been working on recently?** — *IP phone LLDP fix*
+**3. What have you been working on recently?** — _IP phone LLDP fix_
 
 > Situation: Rolling out Poly Edge E500 IP phones across the local office on Zoom Phone. Deployment stalled — half the office phones wouldn't complete one-touch provisioning to the Zoom provisioning server.
 > Task: Diagnose and resolve the issue without disrupting the rest of the office.
@@ -117,7 +117,7 @@ Companion drill doc to `interview-prep.md`. Two passes: **Part 1** is questions 
 >
 > Key phrase: "The protocols tell you exactly what should be happening — the diagnostic work is just matching what you're seeing to what the protocol says should be true."
 
-**4. Tell me about a time something went wrong.** — *Fortinet rollback*
+**4. Tell me about a time something went wrong.** — _Fortinet rollback_
 
 > Situation: Mid-change on the Fortinet firewall — adding a new rule to enable a department service. Site-to-site connectivity to the Denver office dropped.
 > Task: Restore service as fast as possible, understand what happened.
@@ -126,7 +126,7 @@ Companion drill doc to `interview-prep.md`. Two passes: **Part 1** is questions 
 >
 > Key phrase: "A configuration mistake is recoverable. A configuration mistake with no documentation is a crisis."
 
-**5. How do you troubleshoot a network issue? Describe your diagnostic approach.** — *UAG bottleneck*
+**5. How do you troubleshoot a network issue? Describe your diagnostic approach.** — _UAG bottleneck_
 
 > Situation: Remote staff started reporting session latency on VMware Horizon VDI. Not all users, not consistent.
 > Task: Identify whether this was a client-side, network, or server-side issue.
@@ -135,14 +135,14 @@ Companion drill doc to `interview-prep.md`. Two passes: **Part 1** is questions 
 >
 > Key phrase: "I followed the connection path methodically. The UAG is the chokepoint between outside and inside, so that's where I looked once client-side and server-side checked out."
 
-**6. Tell me about a network design decision you made.** — *DMZ connector server*
+**6. Tell me about a network design decision you made.** — _DMZ connector server_
 
 > Situation: External devices needed to reach the internal management network for administration — but opening the perimeter directly was not acceptable.
 > Task: Enable the access without creating a firewall hole into the internal network.
 > Action: Configured a secure connector server in the DMZ. External devices connect to the DMZ host; the DMZ host has a restricted, encrypted connection to the internal management VLAN. Nothing from outside reaches the internal network directly.
 > Result: External administration capability without perimeter exposure. Firewall policy documented with the rationale for the DMZ architecture.
 
-**7. Tell me about a conflict with a coworker, or a time you disagreed with someone.** — *Access token conflict during acquisition scoping*
+**7. Tell me about a conflict with a coworker, or a time you disagreed with someone.** — _Access token conflict during acquisition scoping_
 
 > Situation: VCA was scoping a potential migration of a recently acquired company's production repos to a self-hosted Git instance. It was exploratory only — no migration had been approved.
 > Task: Assess feasibility without disrupting the acquired company's existing deployment pipeline or overstepping into systems that weren't mine yet.
@@ -151,7 +151,7 @@ Companion drill doc to `interview-prep.md`. Two passes: **Part 1** is questions 
 >
 > Key phrase: "I need to be as transparent about my intent as the other person needs to be to actually trust it — not just what I think is sufficient — and to empathize with their position before I make a request that touches something they own."
 
-**8. Tell me about managing a large-scale change, or a time you had time pressure.** — *BitLocker rollout at Five Acres*
+**8. Tell me about managing a large-scale change, or a time you had time pressure.** — _BitLocker rollout at Five Acres_
 
 > Situation: 150+ Windows machines in a healthcare environment needed BitLocker encryption across two business days.
 > Task: Coordinate the rollout without disrupting clinical operations.
@@ -179,18 +179,18 @@ interface GigabitEthernet0/1
 
 **11. What show commands do you use most?**
 
-| Command | When you'd use it |
-| --- | --- |
-| `show ip interface brief` | First thing — are all interfaces up? |
-| `show interfaces gi0/0` | Input/output errors suggest physical or duplex issues |
-| `show vlan brief` | Confirm port-to-VLAN assignments |
-| `show interfaces trunk` | Confirm VLANs are passing on trunk ports |
-| `show ip route` | Is the route present? Is the next-hop correct? |
-| `show cdp neighbors detail` | Map connected devices with IPs |
-| `show lldp neighbors` | Same, but open standard — works with non-Cisco |
-| `show spanning-tree` | STP topology — check for blocked or inconsistent ports |
-| `show ip ospf neighbor` | Are OSPF adjacencies up? |
-| `show mac address-table` | Which port is a specific MAC address on? |
+| Command                     | When you'd use it                                      |
+| --------------------------- | ------------------------------------------------------ |
+| `show ip interface brief`   | First thing — are all interfaces up?                   |
+| `show interfaces gi0/0`     | Input/output errors suggest physical or duplex issues  |
+| `show vlan brief`           | Confirm port-to-VLAN assignments                       |
+| `show interfaces trunk`     | Confirm VLANs are passing on trunk ports               |
+| `show ip route`             | Is the route present? Is the next-hop correct?         |
+| `show cdp neighbors detail` | Map connected devices with IPs                         |
+| `show lldp neighbors`       | Same, but open standard — works with non-Cisco         |
+| `show spanning-tree`        | STP topology — check for blocked or inconsistent ports |
+| `show ip ospf neighbor`     | Are OSPF adjacencies up?                               |
+| `show mac address-table`    | Which port is a specific MAC address on?               |
 
 **12. How do OSPF neighbors form? What would you check if they're not forming?**
 
