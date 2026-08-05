@@ -94,7 +94,7 @@ Companion drill doc to `interview-prep.md`. Two passes: **Part 1** is questions 
 
 **1. Tell me about yourself / walk me through your background.**
 
-> I've been continuing my work as a systems and network admin at VCA Consultants. Since I joined, our user base has grown and management scope has expanded to 2 office sites plus a large remote workforce. I've gotten more involved with the physical and virtual networking infrastructure — firewall rules, access switch configuration, VMware virtual switch config, VLAN management — alongside my usual IT responsibilities: administering our VDI, remote endpoints, user deployment, and VMware server infrastructure. I made an effort to be more involved and aware of the internal network, but my responsibilities are broad by design.
+> I've been continuing my work as an IT systems admin at VCA Consultants. Since I joined, our user base has grown and management scope has expanded to 2 office sites with growth in our remote workforce. I've gotten more involved with the physical and virtual networking infrastructure — firewall rules, access switch configuration, VMware virtual switch config, VLAN management — alongside my usual IT responsibilities: administering our VDI, remote endpoints, user deployment, and VMware server infrastructure. I made an effort to be more involved and aware of the internal network, but my responsibilities are broad by design.
 >
 > The reason I keep coming back for this role is that I want to go deep on the network side specifically. At VCA I cover a lot of ground, but the breadth of the role means I can't specialize. I hear online and amongst my peers that no one really likes to deal with the network, but to me, I see it as an opportunity to push myself and take the path least treaded. That and an opportunity to take ownership of something that can both impact and empower hundreds of people (students, and faculty alike).
 >
@@ -255,6 +255,8 @@ interface GigabitEthernet0/1
 >
 > Then I translate the cause into something that maps to what they already understand. For the IP phone issue: "The switch port had a miscommunication with the phone about which network to connect to — like a handshake that wasn't completing. We corrected the instruction set on the switch and it resolved."
 >
+> Another example for network analogy/metaphor: Why can't I get to this website, it's saying something not secure, but I've accessed this at home before. Our network security check that sites are properly secured with SSL (like a stamp of approval from a governing authority, saying it's safe and legit). It's possible the stamp has expired, so our system is strict and therefore blocking for your safety.
+>
 > I follow up in writing so people have a record of what happened. It avoids repeat questions and builds trust that things are being handled.
 
 **20. What does good network documentation look like to you?**
@@ -299,6 +301,8 @@ interface GigabitEthernet0/1
 **25. Follow-up: Have you ever dealt with a major outage?**
 
 > Lean on the Fortinet rollback and the UAG diagnosis, scaled honestly — minutes, not hours, because prep was in place. The principle is the same as a larger incident.
+>
+> SAN goes down after network infrastructure upgrade, taking out the majority of our end user VDI infrastructure.
 
 **26. Follow-up: What do you do if you can't reach the device remotely?**
 

@@ -29,6 +29,18 @@
 
 ---
 
+## Retrospective: lessons for future network admin interviews (added July 31, after the July 29 interview)
+
+Gaps identified after sitting this interview — carry these into prep for any future network admin role, not just Whittier.
+
+- **Know the hardware/software inventory of your current employer's network cold.** Exact model numbers and firmware/software versions for major infrastructure — the Fortinet firewall appliance model, HP Aruba switch models, AP models, firmware versions in use. Don't just know "we use Fortinet and Aruba" — know which specific units and what version they're running, the way you'd rattle off a `show version`.
+- **DHCP methodology in your own environment.** Be ready to explain concretely how IPs get dynamically assigned to hosts at VCA — where the DHCP scope(s) live, how they're structured across VLANs/sites, whether it's server-based or appliance-based, and how you've actually interacted with it (not just the generic DORA explanation this doc already covers).
+- **VPN configurations beyond SD-WAN.** This doc leans on VeloCloud/Fortinet SD-WAN as the VPN story, but interviewers may probe traditional VPN mechanics directly: GRE and IPsec configuration specifics (not just concepts), and what's actually required for a municipal or institutional environment — client software installs, county/city-specific VPN requirements, endpoint compliance for remote access. Get concrete on what a real IPsec tunnel config looks like, not just the phase 1/phase 2 theory already in Section 6.
+
+**How to apply:** Before the next network admin interview, do a deliberate "know your own environment" pass — pull actual model numbers and firmware versions from VCA's infrastructure, document the real DHCP scope layout, and get hands-on (even lab-based) with a real GRE/IPsec config rather than relying on conceptual explanations.
+
+---
+
 ## Section 1: Introduction
 
 ### "Tell me about yourself" / "Walk me through your background"
@@ -817,16 +829,16 @@ Both mocks land today since Friday/Saturday couldn't carry any speaking practice
 - [x] Morning: full mock interview #1 start to finish — intro, VCA stories, Cisco questions, fundamentals, concerns, your questions. First time out loud, so expect rough spots.
 - [x] Time it — should fit in 45–60 minutes. Note anything vague, slow, or unpracticed.
   - [x] Need to review some sections, but timing is about an hour.
-- [ ] Midday: drill everything flagged from mock #1 — out loud, repeat until smooth, including any Section 5/6 fundamentals questions that tripped you up (the written answers and Saturday's reading should make this faster than starting cold)
+- [s] Midday: drill everything flagged from mock #1 — out loud, repeat until smooth, including any Section 5/6 fundamentals questions that tripped you up (the written answers and Saturday's reading should make this faster than starting cold)
 - [ ] Afternoon/evening: full mock interview #2, including 2–3 supplemental fundamentals questions pulled cold from Section 5 or 6 (have someone else ask, or draw from slips of paper)
 - [ ] Time it again — compare to mock #1; this one should be noticeably smoother
-- [ ] Re-confirm your 3 questions to ask
+- [s] Re-confirm your 3 questions to ask
 
 ### Monday July 27 (evening, after work) — Consolidate
 
 Only day of buffer left before the 29th — prioritize whatever felt shakiest in Sunday's mocks.
 
-- [ ] Drill whatever still felt shaky in Sunday's second mock — out loud, no notes, until it's smooth
+- [x] Drill whatever still felt shaky in Sunday's second mock — out loud, no notes, until it's smooth
 - [ ] Quick pass on Section 5 topics that still feel slow to recall
 - [ ] If voice/energy allows, one more partial run-through of just the intro + weakest STAR story
 
