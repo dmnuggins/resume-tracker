@@ -49,11 +49,11 @@ Gaps identified after sitting this interview — carry these into prep for any f
 
 **Your answer (2 minutes, spoken):**
 
-> I've been continuing my work as a systems and network admin at VCA Consultants. Since I joined, our user base has grown and management scope has expanded to 2 office sites plus a large remote workforce. I've gotten more involved with the physical and virtual networking infrastructure — firewall rules, access switch configuration, VMware virtual switch config, VLAN management — alongside my usual IT responsibilities: administering our VDI, remote endpoints, user deployment, and VMware server infrastructure. I made an effort to be more involved and aware of the internal network, but my responsibilities are broad by design.
+> I've been continuing my work as a systems and network admin at VCA Consultants. Since I joined, our user base has grown and management scope has expanded to 2 office sites plus a larger remote workforce. I've gotten more involved with the physical and virtual networking infrastructure — firewall rules, access switch configuration, VMware virtual switch config, VLAN management — alongside my usual IT responsibilities: administering our VDI, remote endpoints, user deployment, and VMware server infrastructure. I made an effort to be more involved and aware of the internal network, but my responsibilities are broad by design.
 >
 > The reason I keep coming back for this role is that I want to go deep on the network side specifically. At VCA I cover a lot of ground, but the breadth of the role means I can't specialize. I hear online and amongst my peers that no one really likes to deal with the network, but to me, I see it as an opportunity to push myself and take the path least treaded. That and an opportunity to take ownership of something that can both impact and empower hundreds of people (students, and faculty alike)
 >
-> Since we last spoke, the biggest change is my progress on the CCNA. I'm wrapping up coursework this month and sitting the exam in late August. I've been running Packet Tracer labs and applying what I'm learning, making the connections between the theoretical with the practical applications in our production infrastructure. Continuing to learn and grow, and even more focused on empowering users through tech, when given the opportunity.
+> Since we last spoke, the biggest change is my progress on the CCNA. I'm wrapping up coursework this month and sitting the exam in late August/early September. I've been running Packet Tracer labs and applying what I'm learning, making the connections between the theoretical with the practical applications in our production infrastructure. Continuing to learn and grow, and even more focused on empowering users through tech, when given the opportunity.
 
 **Key points to hit:**
 
@@ -100,7 +100,7 @@ These are the specific VCA stories you should be ready to tell in depth. Each on
 
 **STAR:**
 
-- **Situation:** Mid-change on the Fortinet firewall — adding a new rule to enable a department service. Site-to-site connectivity to the Denver office dropped.
+- **Situation:** Mid-change on the Fortinet firewall — adding a new rule to enable a department service (thin client management from remote site). Site-to-site connectivity to the Denver office dropped.
 - **Task:** Restore service as fast as possible, understand what happened.
 - **Action:** Because I document changes as I go — what the rule is, what it's supposed to do, what the before state was — I had the context immediately. Reverted the new rule. Denver connectivity restored within minutes. Then reviewed what the interaction was between the new rule and the existing policies, fixed the ordering, tested again.
 - **Result:** Total outage was under 5 minutes. No ticket needed from Denver — I reached out to confirm restoration before they noticed.
@@ -839,7 +839,7 @@ Both mocks land today since Friday/Saturday couldn't carry any speaking practice
 Only day of buffer left before the 29th — prioritize whatever felt shakiest in Sunday's mocks.
 
 - [x] Drill whatever still felt shaky in Sunday's second mock — out loud, no notes, until it's smooth
-- [ ] Quick pass on Section 5 topics that still feel slow to recall
+- [x] Quick pass on Section 5 topics that still feel slow to recall
 - [ ] If voice/energy allows, one more partial run-through of just the intro + weakest STAR story
 
 ### Tuesday July 28 (evening, after work) — Day before (light only)
