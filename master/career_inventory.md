@@ -101,6 +101,7 @@ _May 2024 – Present_
 - Managed O365 license pool within 20-seat cap; swapped users between M365 tiers (with/without Teams) as team composition changed
 - Deployed and configured Zoom Booking Pages for staff; stored booking URLs in AD extensionAttribute2 for dynamic attribution in the call routing system
 - Maintained regular software updates across VDI image pools and managed endpoints
+- Worked with our Data Scientist to configure RBAC (Role-Based Access Control) on an enterprise application, granting Graph API access so a custom Python app could send emails as users in a specific group tied to a management scope; used least-privileged app access rather than the alternative, which would have been tenant-wide.
 
 ### Scripting & Automation
 
