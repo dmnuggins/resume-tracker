@@ -12,7 +12,8 @@ resume-tracker/
 │   ├── network-admin/
 │   └── it-project-manager/
 ├── master/
-│   └── career_inventory.md    # Granular experience source — never submitted
+│   ├── career_inventory.md    # Granular experience source — never submitted
+│   └── gov_job_duties.md      # Base duty summaries for government applications
 ├── applications/
 │   └── applications.md        # Application tracker
 └── exports/                   # Generated PDFs (gitignored by default)
@@ -24,6 +25,7 @@ resume-tracker/
 
 - **`base/`** — holds the master resume `.docx`. Copy it into a variant folder when starting a new tailored version.
 - **`master/career_inventory.md`** — the canonical experience source. Never submitted. Pull from it when drafting or refining variants. Add new achievements here as they happen.
+- **`master/gov_job_duties.md`** — base "Work Experience" duty summaries for government applications. When applying, copy it to `applications/<job-folder>/gov-job-duties.md` and tailor the copy to the posting; keep the master general.
 - **`variants/<role>/`** — each role type gets its own subfolder. Keep the tailored `.docx` (and any notes) here.
 - **`exports/`** — drop generated PDFs here before sending. Ignored by git unless you tag the snapshot (see below).
 
