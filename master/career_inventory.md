@@ -11,6 +11,24 @@
 
 ---
 
+## Employment Gaps
+
+Reference for any application or interview question about continuous work history. Keep the framing direct and brief; don't over-explain.
+
+### Jul 2019 – Nov 2020 (~16 months), between Five Acres and The Flex Company
+
+Left Five Acres voluntarily, without a role lined up. Was job searching through early 2020, then the COVID hiring freeze hit and paused most of the postings in progress. Picked the search back up as hiring reopened and started at The Flex Company that November.
+
+**Interview-ready line:** "I left that role by choice and was job hunting when COVID hit and hiring froze across the board. I picked it back up once things reopened and landed at The Flex Company."
+
+### Jul 2022 – Feb 2024 (~19 months), between The Flex Company and iKrusher
+
+My grandfather's health was declining during this period, and it was all hands on deck for the family; he passed away during that time. That took priority over the job search. Resumed the search once things settled and started at iKrusher in February 2024.
+
+**Interview-ready line:** "My grandfather's health was declining and it was all hands on deck for my family. He passed away during that stretch, so I stepped back from the job search to help. Once things settled, I picked it back up and started at iKrusher."
+
+---
+
 ## Skills Evidence
 
 | Skill                                | Where Demonstrated                                                         |
@@ -39,7 +57,12 @@ _May 2024 – Present_
 - Assisted with core network switch upgrades + rewiring with DAC
 - Configured our internal 10ZiG thin client manager server to be able to connect to thin clients outside our network using a DMZ secure connection server to securely bridge external thin clients to our internal manager
 - Configured virtual NICs for Dell EMC ESXi hosts when setting up a new server
+- Set up SNMP monitoring for our ESXi servers
 - Configured DHCP and IP lease reservations through Active Directory for new virtual servers
+- Configured and maintained our FortiGate 200F firewall (FortiOS 7.4.12 build 2902)
+  - Firmware upgrades
+  - Policy cleanup
+  - Log review
 - Configured Fortinet firewall rules to enable service connectivity for department needs
   - Air quality management dashboard
   - USPS stamp machine verification
@@ -97,7 +120,7 @@ _May 2024 – Present_
 
 - Worked with department and team leads to vet applications before systems integration
 - Tested, configured, and integrated applications to function well on VDI infrastructure (master machine to instant clone deployment, DEM configs, FSLogix)
-- Diagnosed and resolved VDI application failures caused by DEM cache/profile corruption — including Revit add-ins (PyRevit, Scopbox) failing to load; resolved by clearing stale profile cache via DEM console
+- Diagnosed and resolved VDI application failures caused by DEM cache/profile corruption — including Revit add-ins (PyRevit, Scopebox) failing to load; resolved by clearing stale profile cache via DEM console
 - Managed O365 license pool within 20-seat cap; swapped users between M365 tiers (with/without Teams) as team composition changed
 - Deployed and configured Zoom Booking Pages for staff; stored booking URLs in AD extensionAttribute2 for dynamic attribution in the call routing system
 - Maintained regular software updates across VDI image pools and managed endpoints
@@ -152,12 +175,22 @@ Selected tickets that show diagnostic depth, cross-system knowledge, or non-obvi
 - **AutoCAD 2020 PC3 print driver prompt** — Kris got a "Update PC3 File with New Printer" error on print; resolved by resetting DWG To PDF.pc3 via clearing `%APPDATA%\Autodesk\AutoCAD 2020` config files
 - **Black screen + loading cursor after deferred security update** — Robyn postponed a NUMA Networks update prompt for ~1 week; on forced reboot, machine booted to black screen with spinning cursor; resolved by entering Safe Mode, logging in with local admin, completing the update cleanly
 - **PyRevit not loading in Revit 2022** — Revit add-in failing to initialize for Thanh Nguyen; root cause was stale DEM profile cache for the Revit 2022 path; cleared via DEM console, add-in loaded correctly on next login
-- **Scopbox Sync not appearing in Revit 2025** — plug-in was installed in the VDI gold image per VM_Matrix but not showing in Revit 2025; identified that the bundle was in the wrong Addins path; copied to `%ProgramData%\Autodesk\Revit\Addins\[RevitVersion]` for all Revit versions, confirmed fix on snapshot rebuild
+- **Scopebox Sync not appearing in Revit 2025** — plug-in was installed in the VDI gold image per VM_Matrix but not showing in Revit 2025; identified that the bundle was in the wrong Addins path; copied to `%ProgramData%\Autodesk\Revit\Addins\[RevitVersion]` for all Revit versions, confirmed fix on snapshot rebuild
 - **Bluebeam licensing not applying post-outage** — Samir's Bluebeam license was not being applied after a Bluebeam service outage; re-sign-in resolved license application; also logged into Bluebeam Studio with the eplans shared account
 - **10ZiG thin client config reset** — sporadic occurrences of 10ZiG configs wiping completely, sending users into an unexpected login flow; identified affected units, re-applied configuration through 10ZiG Manager, documented recovery steps
 - **LastPass login recovery** — Gabe couldn't log in to LastPass; account was registered to a secondary email variant; found his password saved in Edge's built-in password manager; confirmed login, coached on password manager hygiene and potential conflicts between LastPass and Edge
 - **Local Outlook (classic) not launching** — Angie's Outlook desktop app failed to open on her physical laptop (non-VDI); diagnosed and resolved via repair/re-registration of the Office installation
 - **Omnissa Horizon Client lag for remote user (Mia)** — significant pointer lag when Mia connected remotely via Horizon Client 8.16.2; investigated connection speed and VDI session metrics; confirmed resolved after UAG and session routing tuning, no further reports
+
+---
+
+## Homelab & Self-Study
+
+_Not professional experience; use in Projects sections and interviews only_
+
+- SNMP monitoring of UniFi network equipment
+- Cisco IOS lab in Packet Tracer for CCNA prep: OSPF neighbors, VLAN trunking, ACLs, interface configuration
+- Cisco CCNA in progress (as of Nov 2026)
 
 ---
 
